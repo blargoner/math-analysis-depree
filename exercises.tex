@@ -26,6 +26,24 @@
 \section*{Introduction}
 This document contains notes and exercises from~\cite{depree}.
 
+\section*{Chapter~13}
+We provide an alternative proof of the forward direction of Theorem~42.
+\begin{thm} If \(f:[a,b]\to\R\) is integrable, then
+\[\int_a^b f=\lim_{c\to a^+}\int_c^b f\]
+\end{thm}
+\begin{proof}
+Note \(\int_c^b f\)~exists for all \(c\in[a,b]\) by Theorem~21. Now
+\begin{align*}
+\lim_{c\to a^+}\int_c^b f&=\lim_{c\to a^+}\Bigl[\,\int_a^b f-\int_a^c f\,\Bigr]&&\text{by Theorem~18}\\
+	&=\int_a^b f-\lim_{c\to a^+}\int_a^c f&&\\
+	&=\int_a^b f-\int_a^a f&&\text{by Theorem~27}\\
+	&=\int_a^b f&&\qedhere
+\end{align*}
+\end{proof}
+\begin{rmk}
+We used the continuity of the indefinite integral (Theorem~27), which was proved using Henstock's Lemma (Lemma~25). The proof of the forward direction of Theorem~42 in the book unnecessarily repeats some ideas from the proof of Henstock's Lemma. See also the proof of the forward direction of Theorem~14.6 in the book.
+\end{rmk}
+
 % References
 \begin{thebibliography}{0}
 \bibitem{depree} DePree, John~D. and Charles W. Swartz. \textit{Introduction to Real Analysis.} Wiley, 1988.
