@@ -5,6 +5,8 @@
 
 \newcommand{\R}{\mathbb{R}}
 
+\newcommand{\abs}[1]{|{#1}|}
+
 % Theorems
 \theoremstyle{plain}
 \newtheorem*{thm}{Theorem}
@@ -42,6 +44,31 @@ Note \(\int_c^b f\)~exists for all \(c\in[a,b]\) by Theorem~21. Now
 \end{proof}
 \begin{rmk}
 We used the continuity of the indefinite integral (Theorem~27), which was proved using Henstock's Lemma (Lemma~25). The proof of the forward direction of Theorem~42 in the book unnecessarily repeats some ideas from the proof of Henstock's Lemma. See also the proof of the forward direction of Theorem~14.6 in the book.
+\end{rmk}
+
+\section*{Chapter~14}
+\begin{exer}[12]
+Let \(f:[a,\infty)\to\R\) be continuous and such that the indefinite integral \(F(x)=\int_a^x f\) is bounded. Let \(g:[a,\infty)\to\R\) be nonnegative, decreasing, and differentiable. Then \(\int_a^{\infty}fg\)~exists if either \(\lim_{x\to\infty}g(x)=0\) or \(\int_a^{\infty}f\)~exists.
+\end{exer}
+\begin{proof}
+For \(b\in[a,\infty)\), \(fg\)~is continuous on~\([a,b]\), so \(\int_a^b fg\)~exists (Theorem~13.23). By the fundamental theorem of calculus (Theorem~13.28), \(F'=f\) on~\([a,b]\), so integration by parts (Proposition~13.17) yields
+\[\int_a^b fg=\int_a^b F'g=F(b)g(b)-F(a)g(a)-\int_a^b Fg'=F(b)g(b)-\int_a^b Fg'\]
+Now \(\lim_{b\to\infty}g(b)\) exists since \(g\)~is decreasing and bounded below by zero. If \(\lim_{b\to\infty}g(b)=0\), then boundedness of~\(F\) implies \(\lim_{b\to\infty}F(b)g(b)=0\). If \(\int_a^\infty f\) exists, then \(\lim_{b\to\infty}F(b)\) exists by the continuity of the indefinite integral at~\(\infty\) (Theorem~6), so \(\lim_{b\to\infty}F(b)g(b)\) exists.
+
+We claim \(\int_a^{\infty}Fg'\) exists. First observe
+\[\int_a^{\infty}g'=\lim_{b\to\infty}\int_a^bg'=\lim_{b\to\infty}[g(b)-g(a)]=\lim_{b\to\infty}g(b)-g(a)\]
+exists by the continuity of the indefinite integral, the fundamental theorem of calculus, and the limit of~\(g\). Since \(g'\le0\),
+\[\int_a^{\infty}\abs{g'}=\int_a^{\infty}-g'=-\int_a^{\infty}g'\]
+also exists by linearity of the integral. Write \(\abs{F}\le M\). Then \(\abs{Fg'}\le M\abs{g'}\) and \(\int_a^{\infty}M\abs{g'}=M\int_a^{\infty}\abs{g'}\)~exists, so \(\int_a^{\infty}Fg'\) exists by comparison (Corollary~7).
+
+Finally, by continuity of the indefinite integral twice more,
+\[\int_a^{\infty}fg=\lim_{b\to\infty}F(b)g(b)-\int_a^{\infty}Fg'\qedhere\]
+\end{proof}
+\begin{rmk}
+These are just Dirichlet's and Abel's tests for conditional convergence of integrals, which are continuous versions of the corresponding discrete tests for conditional convergence of infinite series of numbers (Exercises 4.22 and 4.25) and functions (Exercises 11.36 and 11.37). The proofs are essentially the same in the continuous and discrete cases, except integration by parts replaces summation by parts and absolute integrability replaces absolute convergence.
+\end{rmk}
+\begin{rmk}
+Instead of assuming that \(g\)~is nonnegative and decreasing, we may assume only that \(g\)~is bounded and monotone.
 \end{rmk}
 
 % References
