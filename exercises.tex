@@ -5,13 +5,18 @@
 
 \newcommand{\R}{\mathbb{R}}
 
+\newcommand{\bigunion}{\bigcup}
+
 \newcommand{\abs}[1]{|{#1}|}
+\newcommand{\pos}[1]{#1^{+}}
+\renewcommand{\neg}[1]{#1^{-}}
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
 \newcommand{\dt}{\,d\!t}
 
 % Theorems
 \theoremstyle{plain}
 \newtheorem*{thm}{Theorem}
+\newtheorem*{prop}{Proposition}
 
 \theoremstyle{definition}
 \newtheorem*{exer}{Exercise}
@@ -84,8 +89,31 @@ In the proof of the general Leibniz differentiation rule for integrals (Corollar
 	&=\int_{y_0}^{z_0}D_1f(x_0,t)\dt\tag{2}\\
 	&=D_1G(\vec{v_0})
 \end{align*}
-where (1)~follows from the continuity of indefinite integrals (Theorem~13.27, see above) and (2)~follows from Theorem~5.
+where (1)~follows from the continuity of indefinite integrals (Theorem~13.27, see above) and (2)~follows from Theorem~5.\qed
 \end{rmk}
+
+\noindent We provide an alternative proof of Proposition~47.
+\begin{prop}
+Let \(f:\R\to\R\) and let \(\{E_i\}\)~be a family of pairwise disjoint subsets of~\(\R\) over each of which \(f\)~is absolutely integrable. Then \(f\)~is absolutely integrable over \(E=\bigunion_{i=1}^{\infty}E_i\) if and only if \(\sum_{i=1}^{\infty}\int_{E_i}\abs{f}<\infty\), in which case
+\[\int_E\abs{f}=\sum_{i=1}^{\infty}\int_{E_i}\abs{f}\quad\text{and}\quad\int_E f=\sum_{i=1}^{\infty}\int_{E_i}f\]
+\end{prop}
+\begin{proof}
+We decompose \(f\)~into positive and negative parts (Proposition~13.40(i)).
+
+Since \(f\)~is absolutely integrable over each~\(E_i\), \(\pos{f}\)~and~\(\neg{f}\) are integrable over each~\(E_i\). Let \(S_n=\bigunion_{i=1}^n E_i\), so \(\{S_n\}\)~is increasing and \(E=\bigunion_{i=1}^{\infty}S_i\). By disjoint additivity (Proposition~12(ii)), \(\pos{f}\)~and~\(\neg{f}\) are integrable over each~\(S_n\) with
+\[\int_{S_n}\pos{f}=\sum_{i=1}^n\int_{E_i}\pos{f}\quad\text{and}\quad\int_{S_n}\neg{f}=\sum_{i=1}^n\int_{E_i}\neg{f}\]
+By monotone convergence (Proposition~16), \(\pos{f}\)~and~\(\neg{f}\) are integrable over~\(E\), and equivalently \(f\)~is absolutely integrable over~\(E\), if and only if
+\[\lim_{n\to\infty}\int_{S_n}\pos{f}=\sum_{i=1}^{\infty}\int_{E_i}\pos{f}<\infty\quad\text{and}\quad\sum_{i=1}^{\infty}\int_{E_i}\neg{f}<\infty\tag{1}\]
+in which case
+\[\int_E\pos{f}=\sum_{i=1}^{\infty}\int_{E_i}\pos{f}\quad\text{and}\quad\int_E\neg{f}=\sum_{i=1}^{\infty}\int_{E_i}\neg{f}\]
+Now if (1)~holds, then
+\[\sum_{i=1}^{\infty}\int_{E_i}\abs{f}=\sum_{i=1}^{\infty}\int_{E_i}\bigl[\pos{f}+\neg{f}\bigr]=\int_E\pos{f}+\int_E\neg{f}=\int_E\abs{f}<\infty\]
+and similarly
+\[\sum_{i=1}^{\infty}\int_{E_i}f=\sum_{i=1}^{\infty}\int_{E_i}\bigl[\pos{f}-\neg{f}\bigr]=\int_E\pos{f}-\int_E\neg{f}=\int_E f\]
+Conversely, if \(\sum_{i=1}^{\infty}\int_{E_i}\abs{f}<\infty\), then
+\[\sum_{i=1}^n\int_{E_i}\pos{f}\le\sum_{i=1}^n\int_{E_i}\abs{f}\le\sum_{i=1}^{\infty}\int_{E_i}\abs{f}<\infty\]
+and similarly for \(\sum_{i=1}^n\int_{E_i}\neg{f}\), so (1)~holds.
+\end{proof}
 
 % References
 \begin{thebibliography}{0}
