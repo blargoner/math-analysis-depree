@@ -3,15 +3,27 @@
 \documentclass[letterpaper,12pt]{article}
 \usepackage{amsmath,amssymb,amsthm,enumitem,fourier}
 
+\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 
+\newcommand{\upto}{\uparrow}
+\newcommand{\downto}{\downarrow}
+
+\newcommand{\union}{\cup}
+\newcommand{\sect}{\cap}
 \newcommand{\bigunion}{\bigcup}
+\newcommand{\bigsect}{\bigcap}
+
+\newcommand{\Rint}{R\!\int}
+\newcommand{\dt}{\,d\!t}
+\newcommand{\du}{\,d\!u}
+
+\DeclareMathOperator{\Lap}{\mathcal{L}}
 
 \newcommand{\abs}[1]{|{#1}|}
 \newcommand{\pos}[1]{#1^{+}}
 \renewcommand{\neg}[1]{#1^{-}}
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
-\newcommand{\dt}{\,d\!t}
 
 % Theorems
 \theoremstyle{plain}
@@ -80,6 +92,10 @@ Instead of assuming that \(g\)~is nonnegative and decreasing, we may assume only
 
 \section*{Chapter~15}
 \begin{rmk}
+The dominated convergence theorem (Theorem~3) actually shows the \emph{absolute convergence} of~\(f\), by comparison (Corollary~13.33 and Exercise~47).
+\end{rmk}
+
+\begin{rmk}
 In the proof of the general Leibniz differentiation rule for integrals (Corollary~9), to see that \(D_1G\)~is continuous, let \(\vec{v_0}=(x_0,y_0,z_0)\) and \(\vec{v}=(x,y,z)\) and observe that
 \begin{align*}
 \lim_{\vec{v}\to\vec{v_0}}D_1G(\vec{v})&=\lim_{\vec{v}\to\vec{v_0}}\int_y^z D_1f(x,t)\dt\\
@@ -117,6 +133,75 @@ and similarly for \(\sum_{i=1}^n\int_{E_i}\neg{f}\), so (1)~holds.
 \begin{rmk}
 This result gives us \emph{countable additivity} of the integral over arbitrary (disjoint) sets, provided that we have absolute integrability over each of the sets and the sum of these integrals is finite.
 \end{rmk}
+
+\begin{exer}[1]
+The monotone convergence theorem (Theorem~1) does not hold for the Riemann integral.
+\end{exer}
+\begin{proof}
+Let \(I=[0,1]\), \(J=\Q\sect I=\{r_1,r_2,\ldots\}\), and \(J_k=\{r_1,\ldots,r_k\}\). Each~\(C_{J_k}\) has only finitely many discontinuities and so is R-integrable over~\(I\) with \(\Rint_0^1 C_{J_k}=0\) and hence \(\lim_{k\to\infty}\Rint_0^1 C_{J_k}=0\). Moreover, \(C_{J_k}\upto C_J\). However, \(C_J\)~is not R-integrable. (See also Example~12.4.)
+\end{proof}
+
+\begin{exer}[5]
+The dominated convergence theorem (Theorem~3) does not hold for the Riemann integral.
+\end{exer}
+\begin{proof}
+By the proof of Exercise~1, since \(\abs{C_{J_k}}\le 1\) and \(\Rint_0^1 1=1\).
+\end{proof}
+
+\begin{exer}[6 (Bounded convergence theorem)]
+Let \(I\)~be a compact interval and suppose \(f_k,f:I\to\R\) with \(\abs{f_k}\le M\) and \(f_k\)~integrable for all \(k\ge1\). If \(f_k\to f\), then \(f\)~is integrable and \(\int_I f=\lim_{k\to\infty}\int_I f_k\).
+\end{exer}
+\begin{proof}
+By the dominated convergence theorem, since \(\int_I M<\infty\).
+\end{proof}
+\begin{rmk}
+This result does not hold for unbounded intervals~\(I\). For example, consider \(I=[0,\infty)\) and \(f_k(x)=e^{-x/k}\). Then \(\abs{f_k}\le 1\) on~\(I\) and \(\int_0^\infty f_k=k<\infty\) for all \(k\ge 1\). Also \(f_k\to 1\) on~\(I\). However, \(\int_0^\infty 1=\infty\).
+\end{rmk}
+
+\begin{exer}[7]
+The bounded convergence theorem (Exercise~6) does not hold for the Riemann integral.
+\end{exer}
+\begin{proof}
+By the proof of Exercise~5.
+\end{proof}
+
+\begin{exer}[9 (Laplace transform)]
+Let \(f:[0,\infty)\to\R\) be continuous and define
+\[\Lap\{f\}(x)=\int_0^{\infty}e^{-xt}f(t)\dt\]
+If \(f\)~is of exponential order---that is, if there exist \(M>0\) and \(a\in\R\) such that \(\abs{f(t)}\le Me^{at}\) for all \(t>0\)---then \(\Lap\{f\}\)~defines a continuous function for \(x>a\).
+\end{exer}
+\begin{proof}
+Define \(g(x,t)=e^{-xt}f(t)\). For fixed \(x>a\), \(\int_0^c g(x,t)\dt\) exists for all \(c\ge 0\) by continuity of~\(g\) in~\(t\). Also \(\abs{g(x,t)}\le Me^{(a-x)t}\) for \(t>0\) and \(\int_0^{\infty}e^{(a-x)t}\dt<\infty\), so \(\Lap\{f\}(x)=\int_0^{\infty}g(x,t)\dt\) exists by comparison.
+
+For fixed \(t>0\), \(g\)~is continuous in~\(x\), so by the continuity of the integral (Theorem~5), \(\Lap\{f\}\)~is continuous for \(x>a\).
+\end{proof}
+
+\begin{exer}[12]
+\(\Gamma\bigl(\frac{1}{2}\bigr)=\sqrt{\pi}\).
+\end{exer}
+\begin{proof}
+We have
+\begin{align*}
+\Gamma\bigl(\tfrac{1}{2}\bigr)&=\int_0^{\infty}t^{-1/2}e^{-t}\dt&&\\
+	&=2\int_0^{\infty}\frac{e^{-t}}{2\sqrt{t}}\dt&&\\
+	&=2\int_0^{\infty}e^{-u^2}\du&&\text{by substitution of \(u=\sqrt{t}\)}\\
+	&=2\Bigl(\frac{\sqrt{\pi}}{2}\Bigr)=\sqrt{\pi}&&\text{by Example~8}\qedhere
+\end{align*}
+\end{proof}
+
+\begin{exer}[21]
+The monotone additivity property (Proposition~16) does not hold for the Riemann integral.
+\end{exer}
+\begin{proof}
+Let \(f=1\ge 0\). Let \(E=\Q\sect[0,1]=\{r_1,r_2,\ldots\}\) and \(E_k=\{r_1,\ldots,r_k\}\), so \(E_k\upto E\). Then \(\Rint_{E_k}f=0\), so \(\lim_{k\to\infty}\Rint_{E_k}f=0\), but \(f\)~is not R-integrable over~\(E\).
+\end{proof}
+
+\begin{exer}[22]
+The countable additivity property (Proposition~17) does not hold the Riemann integral.
+\end{exer}
+\begin{proof}
+As in the proof of Exercise~21, except let \(E_k=\{r_k\}\).
+\end{proof}
 
 % References
 \begin{thebibliography}{0}
