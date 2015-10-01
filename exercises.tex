@@ -5,6 +5,7 @@
 
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\Null}{\mathcal{N}}
 
 \newcommand{\upto}{\uparrow}
 \newcommand{\downto}{\downarrow}
@@ -201,6 +202,45 @@ The countable additivity property (Proposition~17) does not hold the Riemann int
 \end{exer}
 \begin{proof}
 As in the proof of Exercise~21, except let \(E_k=\{r_k\}\).
+\end{proof}
+
+\begin{exer}[23]
+The collection \(\Null=\{\,E\subseteq\R\mid\int_E 1=0\,\}\) of null sets is closed under countable unions, countable intersections, differences, and subsets.
+\end{exer}
+\begin{proof}
+First observe that if \(E,F\in\Null\), so \(\int_E 1=0=\int_F 1\), then \(\int_{E\union F}1\) and \(\int_{E\sect F}1\) exist by absolute integrability (Proposition~14) and
+\[\int_{E\union F}1+\int_{E\sect F}1=\int_E 1+\int_F 1=0\]
+by additivity (Proposition~12). It follows that \(\int_{E\union F}1=0=\int_{E\sect F}1\) by positivity of the integral, so \(E\union F\in\Null\) and \(E\sect F\in\Null\). By induction, \(\Null\)~is closed under finite unions and intersections.
+
+Suppose \(\{E_k\}_{k=1}^{\infty}\subseteq\Null\). Define \(S_n=\bigunion_{k=1}^n E_k\) and \(S=\bigunion_{k=1}^{\infty}E_k\). By the above, \(S_n\in\Null\) for all \(n\ge 1\), so \(\int_{S_n}1=0\) for all \(n\ge 1\). Now \(S_n\upto S\), so by monotone convergence (Proposition~16), \(\int_S 1=0\) and \(S\in\Null\). Similarly if \(T_n=\bigsect_{k=1}^n E_k\) and \(T=\bigsect_{k=1}^{\infty}E_k\), then \(T_n\in\Null\) for all \(n\ge 1\) and \(T_n\downto T\), so \(T\in\Null\). Therefore \(\Null\)~is closed under countable unions and intersections.
+
+Now if \(E,F\in\Null\), then by the above and additivity,
+\[\int_{E-F}1=\int_E 1-\int_{E\sect F} 1=0\]
+so \(E-F\in\Null\) and \(\Null\)~is closed under differences.
+
+Finally, if \(E\in\Null\) and \(F\subseteq E\), then
+\[\int_F 1=\int_E 1-\int_{E-F}1=0\]
+so \(F\in\Null\) and \(\Null\)~is closed under subsets.
+\end{proof}
+
+\begin{exer}[26]
+Let \(f,g:I\to\R\). Suppose \(f\)~is absolutely integrable and there exists a sequence~\(\{s_n\}\) of step functions\footnote{A step function is of the form \(s=\sum_{k=1}^n a_kC_{I_k}\) where \(a_k\in\R\) and \(I_k\)~is an interval for \(1\le k\le n\).} with \(\abs{s_n}\le M\) for all \(n\ge 1\) and \(s_n\to g\). Then \(fg\)~is absolutely integrable.
+\end{exer}
+\begin{proof}
+Observe that \(fs_n\)~is integrable and
+\[\abs{fs_n}\le\abs{f}\abs{s_n}\le M\abs{f}\]
+which is integrable. Also \(fs_n\to fg\). Therefore \(fg\)~is absolutely integrable by the dominated convergence theorem.
+\end{proof}
+
+\begin{exer}[31 (Improved dominated convergence theorem)]
+Let \(f,f_k,g:I\to\R\). Suppose \(f_k,g\) are integrable with \(\abs{f_k}\le g\) for all \(k\ge 1\) and \(f_k\to f\). Then
+\[\lim_{k\to\infty}\int_I\abs{f_k-f}=0\]
+\end{exer}
+\begin{proof}
+By the dominated convergence theorem, \(f\)~is integrable, hence \(f_k-f\) is integrable, and \(\lim_{k\to\infty}\int_I(f_k-f)=0\). Also
+\[\abs{f_k-f}\le\abs{f_k}+\abs{f}\le g+g=2g\]
+so \(f_k-f\) is absolutely integrable by comparison. Now \(\abs{f_k-f}\to 0\), so by the dominated convergence theorem again,
+\[\lim_{k\to\infty}\int_I\abs{f_k-f}=\int_I\lim_{k\to\infty}\abs{f_k-f}=\int_I 0=0\qedhere\]
 \end{proof}
 
 % References
