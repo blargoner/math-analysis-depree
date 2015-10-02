@@ -22,6 +22,7 @@
 \DeclareMathOperator{\Lap}{\mathcal{L}}
 
 \newcommand{\abs}[1]{|{#1}|}
+\newcommand{\bigabs}[1]{\left|{#1}\right|}
 \newcommand{\pos}[1]{#1^{+}}
 \renewcommand{\neg}[1]{#1^{-}}
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
@@ -56,7 +57,7 @@ We provide an alternative proof of the forward direction of Theorem~42.
 \begin{proof}
 Note \(\int_c^b f\)~exists for all \(c\in[a,b]\) by Theorem~21. Now
 \begin{align*}
-\lim_{c\to a^+}\int_c^b f&=\lim_{c\to a^+}\Bigl[\,\int_a^b f-\int_a^c f\,\Bigr]&&\text{by Theorem~18}\\
+\lim_{c\to a^+}\int_c^b f&=\lim_{c\to a^+}\left[\,\int_a^b f-\int_a^c f\,\right]&&\text{by Theorem~18}\\
 	&=\int_a^b f-\lim_{c\to a^+}\int_a^c f&&\\
 	&=\int_a^b f-\int_a^a f&&\text{by Theorem~27}\\
 	&=\int_a^b f&&\qedhere
@@ -100,7 +101,7 @@ The dominated convergence theorem (Theorem~3) actually shows the \emph{absolute 
 In the proof of the general Leibniz differentiation rule for integrals (Corollary~9), to see that \(D_1G\)~is continuous, let \(\vec{v_0}=(x_0,y_0,z_0)\) and \(\vec{v}=(x,y,z)\) and observe that
 \begin{align*}
 \lim_{\vec{v}\to\vec{v_0}}D_1G(\vec{v})&=\lim_{\vec{v}\to\vec{v_0}}\int_y^z D_1f(x,t)\dt\\
-	&=\lim_{\vec{v}\to\vec{v_0}}\Bigl[\,\int_y^{y_0}D_1f(x,t)\dt+\int_{y_0}^{z_0}D_1f(x,t)\dt+\int_{z_0}^z D_1f(x,t)\dt\Bigr]\\
+	&=\lim_{\vec{v}\to\vec{v_0}}\left[\,\int_y^{y_0}D_1f(x,t)\dt+\int_{y_0}^{z_0}D_1f(x,t)\dt+\int_{z_0}^z D_1f(x,t)\dt\right]\\
 	&=\lim_{\vec{v}\to\vec{v_0}}\int_y^{y_0}\!\!\!D_1f(x,t)\dt+\lim_{\vec{v}\to\vec{v_0}}\int_{y_0}^{z_0}\!\!\!D_1f(x,t)\dt+\lim_{\vec{v}\to\vec{v_0}}\int_{z_0}^z\!D_1f(x,t)\dt\\
 	&=\lim_{x\to x_0}\int_{y_0}^{z_0}D_1f(x,t)\dt\tag{1}\\
 	&=\int_{y_0}^{z_0}D_1f(x_0,t)\dt\tag{2}\\
@@ -124,9 +125,9 @@ By monotone convergence (Proposition~16), \(\pos{f}\)~and~\(\neg{f}\) are integr
 in which case
 \[\int_E\pos{f}=\sum_{i=1}^{\infty}\int_{E_i}\pos{f}\quad\text{and}\quad\int_E\neg{f}=\sum_{i=1}^{\infty}\int_{E_i}\neg{f}\]
 Now if (1)~holds, then
-\[\sum_{i=1}^{\infty}\int_{E_i}\abs{f}=\sum_{i=1}^{\infty}\int_{E_i}\bigl[\pos{f}+\neg{f}\bigr]=\int_E\pos{f}+\int_E\neg{f}=\int_E\abs{f}<\infty\]
+\[\sum_{i=1}^{\infty}\int_{E_i}\abs{f}=\sum_{i=1}^{\infty}\int_{E_i}\left[\pos{f}+\neg{f}\right]=\int_E\pos{f}+\int_E\neg{f}=\int_E\abs{f}<\infty\]
 and similarly
-\[\sum_{i=1}^{\infty}\int_{E_i}f=\sum_{i=1}^{\infty}\int_{E_i}\bigl[\pos{f}-\neg{f}\bigr]=\int_E\pos{f}-\int_E\neg{f}=\int_E f\]
+\[\sum_{i=1}^{\infty}\int_{E_i}f=\sum_{i=1}^{\infty}\int_{E_i}\left[\pos{f}-\neg{f}\right]=\int_E\pos{f}-\int_E\neg{f}=\int_E f\]
 Conversely, if \(\sum_{i=1}^{\infty}\int_{E_i}\abs{f}<\infty\), then
 \[\sum_{i=1}^n\int_{E_i}\pos{f}\le\sum_{i=1}^n\int_{E_i}\abs{f}\le\sum_{i=1}^{\infty}\int_{E_i}\abs{f}<\infty\]
 and similarly for \(\sum_{i=1}^n\int_{E_i}\neg{f}\), so (1)~holds.
@@ -156,7 +157,7 @@ Let \(I\)~be a compact interval and suppose \(f_k,f:I\to\R\) with \(\abs{f_k}\le
 By the dominated convergence theorem, since \(\int_I M<\infty\).
 \end{proof}
 \begin{rmk}
-This result does not hold for unbounded intervals~\(I\). For example, consider \(I=[0,\infty)\) and \(f_k(x)=e^{-x/k}\). Then \(\abs{f_k}\le 1\) on~\(I\) and \(\int_0^\infty f_k=k<\infty\) for all \(k\ge 1\). Also \(f_k\to 1\) on~\(I\). However, \(\int_0^\infty 1=\infty\).
+This result does not hold for unbounded intervals~\(I\). For example, consider \(I=[0,\infty)\) and \(f_k(x)=e^{-x/k}\). Then \(\abs{f_k}\le 1\) on~\(I\) and \(\int_0^\infty f_k=k<\infty\) for all \(k\ge 1\). Also \(f_k\to 1\) on~\(I\). However, \(\int_0^\infty 1=\infty\). See also Exercise~32.
 \end{rmk}
 
 \begin{exer}[7]
@@ -178,15 +179,15 @@ For fixed \(t>0\), \(g\)~is continuous in~\(x\), so by the continuity of the int
 \end{proof}
 
 \begin{exer}[12]
-\(\Gamma\bigl(\frac{1}{2}\bigr)=\sqrt{\pi}\).
+\(\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}\).
 \end{exer}
 \begin{proof}
 We have
 \begin{align*}
-\Gamma\bigl(\tfrac{1}{2}\bigr)&=\int_0^{\infty}t^{-1/2}e^{-t}\dt&&\\
+\Gamma\left(\tfrac{1}{2}\right)&=\int_0^{\infty}t^{-1/2}e^{-t}\dt&&\\
 	&=2\int_0^{\infty}\frac{e^{-t}}{2\sqrt{t}}\dt&&\\
 	&=2\int_0^{\infty}e^{-u^2}\du&&\text{by substitution of \(u=\sqrt{t}\)}\\
-	&=2\Bigl(\frac{\sqrt{\pi}}{2}\Bigr)=\sqrt{\pi}&&\text{by Example~8}\qedhere
+	&=2\left(\frac{\sqrt{\pi}}{2}\right)=\sqrt{\pi}&&\text{by Example~8}\qedhere
 \end{align*}
 \end{proof}
 
@@ -242,6 +243,53 @@ By the dominated convergence theorem, \(f\)~is integrable, hence \(f_k-f\) is in
 so \(f_k-f\) is absolutely integrable by comparison. Now \(\abs{f_k-f}\to 0\), so by the dominated convergence theorem again,
 \[\lim_{k\to\infty}\int_I\abs{f_k-f}=\int_I\lim_{k\to\infty}\abs{f_k-f}=\int_I 0=0\qedhere\]
 \end{proof}
+
+\begin{exer}[32]
+Let \(f_n(t)=n/(t^2+n^2)\) for \(t\in\R\). Then \(0\le f_n\le 1\) and \(\int_{-\infty}^{\infty} f_n=\pi\) for all \(n\ge 1\), and \(f_n\to 0\).
+\end{exer}
+\begin{proof}
+For all \(t\in\R\) and \(n\ge 1\),
+\[0<\frac{n}{t^2+n^2}\le\frac{n}{n^2}=\frac{1}{n}\le 1\]
+Also
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{n}{t^2+n^2}\dt&=\int_{-\infty}^{\infty}\frac{n^2}{n^2u^2+n^2}\du&&\text{by substitution of \(u=t/n\)}\\
+	&=\int_{-\infty}^{\infty}\frac{1}{u^2+1}\du&&\\
+	&=\left.\tan^{-1}u\,\right|_{-\infty}^{\infty}&&\\
+	&=\frac{\pi}{2}-\left(-\frac{\pi}{2}\right)=\pi&&
+\end{align*}
+Finally,
+\[\lim_{n\to\infty}\frac{n}{t^2+n^2}=\lim_{n\to\infty}\frac{1/n}{t^2(1/n^2)+1}=0\qedhere\]
+\end{proof}
+\begin{rmk}
+In this example,
+\[\lim_{n\to\infty}\int_{-\infty}^{\infty} f_n=\pi\ne 0=\int_{-\infty}^{\infty}\lim_{n\to\infty} f_n\]
+This does not contradict the dominated convergence theorem because \(\{f_n\}\)~is not dominated by an integrable function over all of~\(\R\). Similarly this does not contradict the bounded convergence theorem because \(\R\)~is unbounded.
+\end{rmk}
+
+\begin{exer}[33]
+Let \(f,f_k,g:\R\to\R\). Suppose \(f_k,g\) are integrable with \(\abs{f_k}\le g\) for all \(k\ge 1\) and \(f_k\to f\). Let \(F_k\)~be the indefinite integral of~\(f_k\), and \(F\)~that of~\(f\), so \(F_k(x)=\int_0^x f_k\) and \(F(x)=\int_0^x f\). Then \(F_k\to F\) uniformly on~\(\R\).
+\end{exer}
+\begin{proof}
+By the dominated convergence theorem (Exercise~31), \(\int_{\R}\abs{f_k-f}\to 0\). Given \(\epsilon>0\), choose~\(N\) such that \(\int_{\R}\abs{f_k-f}<\epsilon\) for all \(k\ge N\). Then
+\[\abs{F_k(x)-F(x)}=\bigabs{\int_0^x(f_k-f)}\le\int_0^x\abs{f_k-f}\le\int_{\R}\abs{f_k-f}<\epsilon\]
+for all \(x\in\R\) and \(k\ge N\), hence \(F_k\to F\) uniformly on~\(\R\).
+\end{proof}
+
+\begin{exer}[34]
+Let \(f_k=C_{[k,k+1/k)}\). Then \(f_k\to 0\) on~\(\R\) and \(\int_{\R}f_k\to 0\), but \(\{f_k\}\)~is not dominated by an integrable function on~\(\R\).
+\end{exer}
+\begin{proof}
+It is clear that \(f_k\to 0\) and \(\int_{\R}f_k=1/k\to 0\). Suppose \(g:\R\to\R\) is integrable and \(f_k\le g\) for all \(k\ge 1\). Then
+\[\frac{1}{k}=\int_k^{k+1/k}f_k\le\int_k^{k+1/k}g\]
+for all \(k\ge 1\), so
+\[\sum_{k=1}^n\frac{1}{k}\le\sum_{k=1}^n\int_k^{k+1/k}g\le\int_{\R}g\]
+for all \(n\ge 1\). But then \(\infty=\sum_{k=1}^{\infty}1/k\le\int_{\R}g\), so \(g\)~is not integrable after all.
+\end{proof}
+\begin{rmk}
+In this example,
+\[\lim_{k\to\infty}\int_{\R}f_k=0=\int_{\R}\lim_{k\to\infty} f_k\]
+This shows that domination is not a necessary condition for interchanging limit and integral.
+\end{rmk}
 
 % References
 \begin{thebibliography}{0}
