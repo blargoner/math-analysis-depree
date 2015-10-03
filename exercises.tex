@@ -14,6 +14,8 @@
 \newcommand{\sect}{\cap}
 \newcommand{\bigunion}{\bigcup}
 \newcommand{\bigsect}{\bigcap}
+\newcommand{\fmin}{\wedge}
+\newcommand{\fmax}{\vee}
 
 \newcommand{\Rint}{R\!\int}
 \newcommand{\dt}{\,d\!t}
@@ -289,6 +291,40 @@ for all \(n\ge 1\). But then \(\infty=\sum_{k=1}^{\infty}1/k\le\int_{\R}g\), so 
 In this example,
 \[\lim_{k\to\infty}\int_{\R}f_k=0=\int_{\R}\lim_{k\to\infty} f_k\]
 This shows that domination is not a necessary condition for interchanging limit and integral.
+\end{rmk}
+
+\begin{exer}[40 (Fatou)]
+Let \(f,f_k:I\to\R\). Suppose \(f_k\ge 0\) and \(f_k\)~is integrable for all \(k\ge 1\) with \(f_k\to f\) and \(\liminf_{k\to\infty}\int_I f_k<\infty\). Then \(f\)~is integrable and
+\[\int_I f\le\liminf_{k\to\infty}\int_I f_k\]
+\end{exer}
+\begin{proof}
+Let \(g_k=\inf_{m\ge k}f_m\). Note \(g_k\)~is well defined since \(f_m\ge 0\) for all \(m\ge 1\). Also \(g_k\upto f\) (in other words, \(f=\liminf_{k\to\infty}f_k\)).
+
+We claim \(g_k\)~is integrable for all \(k\ge 1\). Indeed, let \(g_{k,m}=f_k\fmin\cdots\fmin f_{k+m}\). Then \(g_{k,m}\)~is integrable (Proposition~14) and \(\int_I g_{k,m}\ge 0\) for all \(m\ge 1\). Also \(g_{k,m}\downto g_k\), hence \(\int_I g_{k,m}\downto{}\), so by the monotone convergence theorem (Theorem~1), \(g_k\)~is integrable as claimed.
+
+We have \(\int_I g_k\upto{}\). We claim that \(\{\int_I g_k\}\)~is bounded above. Indeed, for any \(1\le k\le n\) we have \(g_k=\inf_{m\ge k}f_m\le f_n\), so \(\int_I g_k\le\int_I f_n\), and hence
+\[\int_I g_k\le\inf_{n\ge k}\int_I f_n\le\sup_{k\ge 1}\inf_{n\ge k}\int_I f_n=\liminf_{k\to\infty}\int_I f_k<\infty\]
+It follows from the monotone convergence theorem that \(f\)~is integrable and
+\[\int_I f=\lim_{k\to\infty}\int_I g_k\le\liminf_{k\to\infty}\int_I f_k\qedhere\]
+\end{proof}
+\begin{rmk}
+We see from the proof that the conclusion can be stated as
+\[\int_I\liminf_{k\to\infty}f_k\le\liminf_{k\to\infty}\int_I f_k\]
+so this result allows interchange of limit inferior and integral (with inequality) under certain conditions. The proof is essentially one half of the proof of the dominated convergence theorem (Theorem~3).
+\end{rmk}
+
+\begin{exer}[46]
+If \(f:\R\to\R\) is absolutely integrable and uniformly continuous, then \(\lim_{\abs{x}\to\infty}f(x)=0\).
+\end{exer}
+\begin{proof}
+If \(\lim_{\abs{x}\to\infty}f(x)\ne 0\), then \(\lim_{x\to\infty}f(x)\ne 0\) or \(\lim_{x\to-\infty}f(x)\ne 0\). Suppose \(\lim_{x\to\infty}f(x)\ne 0\) (the other case is similar). Then there is \(\epsilon>0\)  and a sequence \(x_k\to\infty\) with \(x_{k+1}-x_k\ge 1\) such that \(\abs{f(x_k)}\ge\epsilon\) for all \(k\ge 1\). By the uniform continuity of~\(f\), there is \(0<\delta<1/2\) such that \(\abs{f(x)}\ge\epsilon/2\) whenever \(\abs{x-x_k}<\delta\). Now
+\[\int_{x_k-\delta}^{x_k+\delta}\abs{f}\ge\int_{x_k-\delta}^{x_k+\delta}\frac{\epsilon}{2}=\epsilon\delta\]
+But since the intervals \([x_k-\delta,x_k+\delta]\) are pairwise disjoint, this means
+\[\int_{\R}\abs{f}\ge\sum_{k=1}^{\infty}\int_{x_k-\delta}^{x_k+\delta}\abs{f}\ge\sum_{k=1}^{\infty}\epsilon\delta=\infty\]
+by additivity, contradicting that \(f\)~is absolutely integrable.
+\end{proof}
+\begin{rmk}
+This result does not hold for continuous functions. Consider \(f:\R\to\R\) a nonnegative, continuous bump function with bumps of height~\(1\) and area~\(1/k^2\) at all integers \(\pm k\ne0\), and zero in between. Then \(f\)~is absolutely integrable since \(\sum 2/k^2<\infty\), but \(\lim_{\abs{x}\to\infty}f(x)\ne 0\) since \(f(\pm k)=1\) for all integers \(k\ne 0\). Note \(f\)~is not uniformly continuous since the bumps get arbitrarily steep as \(\abs{x}\to\infty\).
 \end{rmk}
 
 % References
