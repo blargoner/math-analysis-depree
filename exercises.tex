@@ -28,6 +28,7 @@
 \newcommand{\pos}[1]{#1^{+}}
 \renewcommand{\neg}[1]{#1^{-}}
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand{\comp}[1]{#1^c}
 
 % Theorems
 \theoremstyle{plain}
@@ -325,6 +326,21 @@ by additivity, contradicting that \(f\)~is absolutely integrable.
 \end{proof}
 \begin{rmk}
 This result does not hold for continuous functions. Consider \(f:\R\to\R\) a nonnegative, continuous bump function with bumps of height~\(1\) and area~\(1/k^2\) at all integers \(\pm k\ne0\), and zero in between. Then \(f\)~is absolutely integrable since \(\sum 2/k^2<\infty\), but \(\lim_{\abs{x}\to\infty}f(x)\ne 0\) since \(f(\pm k)=1\) for all integers \(k\ne 0\). Note \(f\)~is not uniformly continuous since the bumps get arbitrarily steep as \(\abs{x}\to\infty\).
+\end{rmk}
+
+\section*{Chapter~16}
+\begin{exer}[10]
+Let \(f(x)=\sin(x)/x\) on \(I=[0,\infty)\). Then \(f\)~is integrable, but \(\pos{f}\)~is not integrable (Example~14.10). Let \(E_n=[2n\pi, 2n\pi+\pi]\) and \(E=\bigunion_{n=0}^{\infty}E_n\). Then \(E\)~is measurable (Proposition~4), but \(f\)~is not integrable over~\(E\) since \(fC_E=\pos{f}\).
+\end{exer}
+\begin{rmk}
+This example shows that the class of integrable functions is not closed under restriction to measurable subsets.
+\end{rmk}
+
+\begin{exer}[13]
+Let \(E\)~be a nonmeasurable subset of~\(\R\). By definition, there exists a compact interval \(I\subseteq\R\) such that \(E\sect I\)~is not integrable. Let \(f=C_{E\sect I}-C_{\comp{E}\sect I}\). Then \(\abs{f}=C_I\)~is integrable, but \(f\)~is not integrable, because \(C_{E\sect I}=(f+\abs{f})/2\) is not integrable.
+\end{exer}
+\begin{rmk}
+This example shows that absolute integrability of a function~\(f\) is a stronger property than integrability of~\(\abs{f}\).
 \end{rmk}
 
 % References
