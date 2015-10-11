@@ -18,8 +18,11 @@
 \newcommand{\fmax}{\vee}
 
 \newcommand{\Rint}{R\!\int}
-\newcommand{\dt}{\,d\!t}
-\newcommand{\du}{\,d\!u}
+\renewcommand{\d}[1]{\,d\!{#1}}
+\newcommand{\dt}{\d{t}}
+\newcommand{\du}{\d{u}}
+\newcommand{\dx}{\d{x}}
+\newcommand{\dy}{\d{y}}
 
 \DeclareMathOperator{\Lap}{\mathcal{L}}
 
@@ -36,6 +39,7 @@
 \newtheorem*{prop}{Proposition}
 
 \theoremstyle{definition}
+\newtheorem*{exmp}{Example}
 \newtheorem*{exer}{Exercise}
 
 \theoremstyle{remark}
@@ -342,6 +346,21 @@ Let \(E\)~be a nonmeasurable subset of~\(\R\). By definition, there exists a com
 \begin{rmk}
 This example shows that absolute integrability of a function~\(f\) is a stronger property than integrability of~\(\abs{f}\).
 \end{rmk}
+
+\section*{Chapter~17}
+\begin{exmp}[14]
+Let \(f(x,y)=e^{-xy}-2e^{-2xy}\). Then for \(y>0\),
+\[g(y)=\int_1^{\infty}f(x,y)\dx=\left[\frac{-e^{-xy}}{y}+\frac{e^{-2xy}}{y}\right]_{x=1}^{\infty}=\frac{e^{-y}-e^{-2y}}{y}\]
+We claim \(\int_0^{\infty}g\) exists. First, \(\int_c^1 g\)~exists for all \(0<c\le 1\) by continuity of~\(g\). Also \(g(y)\to 1\) as \(y\to 0\) (by L'Hospital), so \(g\)~is bounded on~\((0,1]\) and \(\int_0^1 g\)~exists by comparison. Note \(g(y)>0\) for \(y>0\) since \(e^z\)~is strictly increasing, so \(\int_0^1g>0\). Integration by parts yields
+\[\int_1^{\infty}g=\int_1^{\infty}\frac{1}{y^2}\left(\frac{e^{-2y}}{2}-e^{-y}\right)\dy+C\]
+which exists by comparison with~\(\int_1^{\infty}1/y^2\dy\).
+
+Now for \(x\ge 1\),
+\[h(x)=\int_0^1 f(x,y)\dy=\frac{e^{-2x}-e^{-x}}{x}\]
+Observe that \(\int_1^c h\)~exists for all \(c\ge 1\) by continuity of~\(h\), and \(\abs{h}=g\) on~\([1,\infty)\), so \(\int_1^{\infty}h\)~exists by comparison. Since \(h(x)<0\) for \(x\ge 1\), \(\int_1^{\infty}h<0\). By the above,
+\[-\infty<\int_1^{\infty}\int_0^1 f(x,y)\dy\dx<0<\int_0^1\int_1^{\infty}f(x,y)\dx\dy<\infty\]
+so these two iterated integrals exist but are not equal.
+\end{exmp}
 
 % References
 \begin{thebibliography}{0}
