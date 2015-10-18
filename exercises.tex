@@ -6,6 +6,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Null}{\mathcal{N}}
+\newcommand{\D}{\mathcal{D}}
 
 \newcommand{\upto}{\uparrow}
 \newcommand{\downto}{\downarrow}
@@ -362,6 +363,21 @@ Observe that \(\int_1^c h\)~exists for all \(c\ge 1\) by continuity of~\(h\), an
 so these two iterated integrals exist but are not equal.
 \end{exmp}
 
+\begin{exer}[6]
+\(\int_{\R^2}C_{[0,1]}=0\).
+\end{exer}
+\begin{proof}
+We prove something stronger. Let \(f(x,y)=(1/x)C_{(0,1]}(x)\). We claim that \(\int_{\R^2}f=0\), from which the result follows by comparison (setting \(f(0,0)=1\)). We appeal directly to the definition of the integral.
+
+Let \(\epsilon>0\). For each \(n\ge 0\), let \(S_n\)~be an open rectangle (strip) of area~\(\epsilon/4^{n+1}\) surrounding the interval \(I_n=(1/2^{n+1},1/2^n]\). Define a gauge~\(\gamma\) on~\(\R^2\) as follows: if \(x\in I_n\), then \(\gamma(x)\subseteq S_n\), otherwise \(\gamma(x)\)~is arbitrary. Let \(\D\)~be a \(\gamma\)-fine tagged division of~\(\R^2\). Let \(\D_n=\{\,(x,I)\in\D\mid x\in I_n\,\}\). Then
+\[S(f,\D_n)=\sum_{(x,I)\in\D_n}\frac{1}{x}v(I)<2^{n+1}v(S_n)=\frac{\epsilon}{2^{n+1}}\]
+Therefore
+\[S(f,\D)=\sum_{n=0}^{\infty}S(f,\D_n)\le\sum_{n=0}^{\infty}\frac{\epsilon}{2^{n+1}}=\epsilon\qedhere\]
+\end{proof}
+\begin{rmk}
+This proof shows that, although \(\int_{[0,1]}1/x=\infty\), \(\int_{[0,1]^2}1/x=0\)---that is, although there is infinite \emph{area} under the curve~\(1/x\) over the unit interval in~\(\R\), there is no \emph{volume} under the curve over the unit square in~\(\R^2\).
+\end{rmk}
+
 \begin{exer}[9 (Fubini)]
 Let \(\alpha,\beta:[a,b]\to\R\) be continuous with \(\alpha\le\beta\) and
 \[E=[a,b]\times[\alpha,\beta]=\{\,(x,y)\mid a\le x\le b,\ \alpha(x)\le y\le\beta(x)\,\}\]
@@ -386,7 +402,7 @@ Let \(f(x,y)=1/(x+y)\). Let \(E_n=[1/n,1]^2\), so \(E_n\subseteq E_{n+1}\) and \
 	&=2\log 2+\frac{2\log 2}{n}-\frac{2\log n}{n}-2\left(\frac{n+1}{n}\right)\log\left(\frac{n+1}{n}\right)\\
 	&\to 2\log 2\quad\text{as }n\to\infty
 \end{align*}
-Since \(f>0\) on~\((0,1]^2\), monotone convergence implies \(f\)~is integrable over~\((0,1]^2\), hence also over~\([0,1]^2\), and \(\int_{[0,1]^2}f=2\log 2\).
+Since \(f>0\) on~\((0,1]^2\), monotone convergence implies \(f\)~is integrable over~\((0,1]^2\), hence also over~\([0,1]^2\) (see Exercise~6), and \(\int_{[0,1]^2}f=2\log 2\).
 
 Let \(g(x,y)=1/(x^2+y^2)\). For \(x,y>0\), \(0<x^2+y^2<x^2+2xy+y^2=(x+y)^2\), so \(h(x,y)=1/(x+y)^2<g(x,y)\). Now
 \begin{align*}
