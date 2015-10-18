@@ -362,6 +362,79 @@ Observe that \(\int_1^c h\)~exists for all \(c\ge 1\) by continuity of~\(h\), an
 so these two iterated integrals exist but are not equal.
 \end{exmp}
 
+\begin{exer}[9 (Fubini)]
+Let \(\alpha,\beta:[a,b]\to\R\) be continuous with \(\alpha\le\beta\) and
+\[E=[a,b]\times[\alpha,\beta]=\{\,(x,y)\mid a\le x\le b,\ \alpha(x)\le y\le\beta(x)\,\}\]
+If \(f:\R^2\to\R\) is continuous, then \(f\)~is integrable over~\(E\) and
+\[\int_E f=\int_a^b\int_{\alpha(x)}^{\beta(x)}f(x,y)\dy\dx\]
+\end{exer}
+\begin{proof}
+Let \(m=\min\alpha\) and \(M=\max\beta\). Then \(m\le\alpha\le\beta\le M\), so \(E\subseteq I=[a,b]\times[m,M]\). Note \(E\)~is compact in~\(\R^2\) and \(f\)~is continuous on~\(E\), so \(fC_E\)~is bounded on~\(I\) and is also the limit of a sequence of step functions on~\(I\) (Lemma~9). By Fubini's theorem for bounded functions on bounded intervals (Theorem~11), \(fC_E\)~is integrable over~\(I\), so \(f\)~is integrable over~\(E\), and
+\[\int_E f=\int_a^b\int_m^M fC_E\dy\dx\]
+But for fixed \(x\in[a,b]\), \(\int_m^M fC_E\dy=\int_{\alpha(x)}^{\beta(x)}f\dy\) by definition of~\(E\), so
+\[\int_E f=\int_a^b\int_{\alpha(x)}^{\beta(x)}f(x,y)\dy\dx\qedhere\]
+\end{proof}
+
+\begin{exer}[13]
+\[\int_{[0,1]^2}\frac{1}{x+y}=2\log 2\qquad\int_{[0,1]^2}\frac{1}{x^2+y^2}=\infty\]
+\end{exer}
+\begin{proof}
+Let \(f(x,y)=1/(x+y)\). Let \(E_n=[1/n,1]^2\), so \(E_n\subseteq E_{n+1}\) and \(\bigunion_{n=1}^{\infty}E_n=(0,1]^2\). Then \(f\)~is continuous and integrable over~\(E_n\), and by Fubini,
+\begin{align*}
+\int_{E_n}f&=\int_{1/n}^1\int_{1/n}^1 f(x,y)\dx\dy\\
+	&=\int_{1/n}^1\left[\log(y+1)-\log(y+1/n)\right]\dy\\
+	&=2\log 2+\frac{2\log 2}{n}-\frac{2\log n}{n}-2\left(\frac{n+1}{n}\right)\log\left(\frac{n+1}{n}\right)\\
+	&\to 2\log 2\quad\text{as }n\to\infty
+\end{align*}
+Since \(f>0\) on~\((0,1]^2\), monotone convergence implies \(f\)~is integrable over~\((0,1]^2\), hence also over~\([0,1]^2\), and \(\int_{[0,1]^2}f=2\log 2\).
+
+Let \(g(x,y)=1/(x^2+y^2)\). For \(x,y>0\), \(0<x^2+y^2<x^2+2xy+y^2=(x+y)^2\), so \(h(x,y)=1/(x+y)^2<g(x,y)\). Now
+\begin{align*}
+\int_{E_n}h&=\int_{1/n}^1\int_{1/n}^1 h(x,y)\dx\dy\\
+	&=\int_{1/n}^1\left(\frac{1}{y+1/n}-\frac{1}{y+1}\right)\dy\\
+	&=2\log\left(\frac{n+1}{n}\right)-\log\left(\frac{2}{n}\right)-\log 2\\
+	&\to\infty\quad\text{as }n\to\infty
+\end{align*}
+By comparison, \(\int_{E_n}g\to\infty\) as \(n\to\infty\), so \(g\)~is not integrable over~\([0,1]^2\).
+\end{proof}
+
+\begin{exer}[16 (Generalized dominated convergence theorem)]
+Let \(f_k,f,g:\R^p\to\R\). Suppose \(f_k,g\)~are integrable with \(\abs{f_k}\le g\) almost everywhere for each \(k\ge1\), and \(f_k\to f\) pointwise almost everywhere. Then \(f\)~is integrable and
+\[\int_{\R^p}f=\lim_{k\to\infty}\int_{\R^p}f_k\]
+\end{exer}
+\begin{proof}
+Let  \(E_0=\{\,x\in\R^p\mid\lim_{k\to\infty}f_k(x)\ne f(x)\,\}\) and \(E_k=\{\,x\in\R^p\mid\abs{f_k(x)}>g(x)\,\}\), so \(E_k\)~is null for all \(k\ge 0\) and \(E=\bigunion_{k=0}^{\infty}E_k\) is also null. Define \(\overline{f_k}=f_k C_{\comp{E}}\), \(\overline{f}=f C_{\comp{E}}\), and \(\overline{g}=g C_{\comp{E}}\). Since \(\overline{f_k}=f_k\) and \(\overline{g}=g\) almost everywhere, \(\overline{f_k}\)~and~\(\overline{g}\) are integrable and \(\int_{\R^p}\overline{f_k}=\int_{\R^p}f_k\) (Lemma~9). Also \(\abs{\overline{f_k}}\le\overline{g}\) and \(\overline{f_k}\to\overline{f}\). By the dominated convergence theorem, \(\overline{f}\)~is integrable and
+\[\int_{\R^p}\overline{f}=\lim_{k\to\infty}\int_{\R^p}\overline{f_k}=\lim_{k\to\infty}\int_{\R^p}f_k\]
+But \(f=\overline{f}\) almost everywhere, so \(f\)~is integrable and \(\int_{\R^p}f=\int_{\R^p}\overline{f}\).
+\end{proof}
+
+\begin{exer}[18]
+Let \(f:G\to\R\) and \(g:H\to\R\) be absolutely integrable limits of step functions and \(h(x,y)=f(x)g(y)\). Then \(h\)~is absolutely integrable over \(I=G\times H\) and \(\int_I h=\int_G f\cdot\int_H g\).
+\end{exer}
+\begin{proof}
+Note \(h\)~is the limit of step functions on~\(\R^2\) and
+\begin{align*}
+\int_H\int_G\abs{h(x,y)}\dx\dy&=\int_H\int_G\abs{f(x)}\abs{g(y)}\dx\dy\\
+	&=\int_H\abs{g(y)}\int_G\abs{f(x)}\dx\dy\\
+	&=\int_G\abs{f(x)}\dx\int_H\abs{g(y)}\dy
+\end{align*}
+which exists by assumption. By Fubini (Theorem~12), \(h\)~is absolutely integrable over~\(I\), and by a similar computation, \(\int_I h=\int_G f\cdot\int_H g\).
+\end{proof}
+
+\begin{exer}[24]
+\(I=\int_0^{\infty}e^{-x^2}\dx=\sqrt{\pi}/2\).
+\end{exer}
+\begin{proof}
+Note \(I\)~exists by comparison with~\(e^{-x}\) and \(I\ge 0\) since \(e^{-x^2}\ge 0\). Now
+\begin{align*}
+I^2&=\int_0^{\infty}e^{-x^2}\dx\int_0^{\infty}e^{-y^2}\dy&&\\
+	&=\int_0^{\infty}\int_0^{\infty}e^{-(x^2+y^2)}\dx\dy&&\text{by Exercise~18}\\
+	&=\int_0^{\pi/2}\int_0^{\infty}e^{-r^2}r\d{r}\d{\,\theta}&&\text{by polar substitution}\\
+	&=\int_0^{\pi/2}\frac{1}{2}\d{\,\theta}=\frac{\pi}{4}&&
+\end{align*}
+It follows that \(I=\sqrt{\pi}/2\).
+\end{proof}
+
 % References
 \begin{thebibliography}{0}
 \bibitem{depree} DePree, John~D. and Charles W. Swartz. \textit{Introduction to Real Analysis.} Wiley, 1988.
