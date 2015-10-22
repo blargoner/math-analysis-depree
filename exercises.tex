@@ -17,6 +17,7 @@
 \newcommand{\bigsect}{\bigcap}
 \newcommand{\fmin}{\wedge}
 \newcommand{\fmax}{\vee}
+\newcommand{\conv}{\ast}
 
 \newcommand{\Rint}{R\!\int}
 \renewcommand{\d}[1]{\,d\!{#1}}
@@ -450,6 +451,21 @@ I^2&=\int_0^{\infty}e^{-x^2}\dx\int_0^{\infty}e^{-y^2}\dy&&\\
 \end{align*}
 It follows that \(I=\sqrt{\pi}/2\).
 \end{proof}
+
+\section*{Chapter~18}
+\begin{rmk}
+Convolution is commutative (Exercise~1) and associative (Exercise~2), and if \(\varphi_n\)~is a delta sequence, then it is an ``approximate identity'' element since \(f\conv\varphi_n\approx f\) under appropriate conditions (Theorem~7).
+\end{rmk}
+
+\begin{exer}[3]
+Let \(f,g:\R\to\R\). Suppose \(f\)~is bounded and continuous and \(g\)~is continuous and absolutely integrable. Then \(f\conv g\)~exists and is bounded and continuous, with \(\sup\abs{f\conv g}\le\sup\abs{f}\int_{-\infty}^{\infty}\abs{g}\).
+\end{exer}
+\begin{proof}
+Let \(h(x,y)=f(x-y)g(y)\). For \(x\in\R\), \(\int_a^b h(x,y)\dy\) exists for all \(a,b\in\R\) by continuity of \(f\)~and~\(g\). Let \(M=\sup\abs{f}\). Then \(\abs{h(x,y)}\le M\abs{g(y)}\) for all \(y\in\R\) by boundedness of~\(f\) and \(M\abs{g}\)~is integrable, so \(f\conv g(x)=\int_{-\infty}^{\infty}h(x,y)\dy\) exists by comparison. Similarly \(\int_{-\infty}^{\infty}\abs{h(x,y)}\dy\) exists, so \(\abs{f\conv g(x)}\le M\int_{-\infty}^{\infty}\abs{g}\). Since \(x\)~was arbitrary, it follows that \(\sup{\abs{f\conv g}}\le M\int_{-\infty}^{\infty}\abs{g}\). Finally, since \(h\)~is also continuous in~\(x\) for each \(y\in\R\), it follows that \(f\conv g\)~is continuous.
+\end{proof}
+\begin{rmk}
+Contrary to what the book asks us to prove, \(f\conv g\)~is not necessarily integrable. For example, if \(f(x)=1\) and \(g(y)=e^{-y^2}\), then \(f\conv g(x)=\sqrt{\pi}\), which is not integrable.
+\end{rmk}
 
 % References
 \begin{thebibliography}{0}
