@@ -471,11 +471,9 @@ Contrary to what the book asks us to prove, \(f\conv g\)~is not necessarily inte
 \end{rmk}
 
 \section*{Chapter~22}
-\begin{rmk}
-To better understand the proof of the Riesz-Fischer theorem on the completeness of~\(\L^1\) (Theorem~7), first observe that, in general, a normed linear space is complete if and only if every absolutely convergent series converges:\footnote{See Proposition~6.5 in~\cite{royden}.}
-\begin{prop}
-A normed linear space \((X,\norm{\cdot})\) is complete if and only if, whenever \(\{x_k\}\subseteq X\) and \(\sum\norm{x_k}\)~converges, then \(\sum x_k\)~converges.
-\end{prop}
+\begin{exer}[11]
+A normed linear space \((X,\norm{\cdot})\) is complete if and only if, when \(\{x_k\}\subseteq X\) and \(\sum\norm{x_k}\)~converges, then \(\sum x_k\)~converges.\footnote{See also Proposition~6.5 in~\cite{royden}.}
+\end{exer}
 \begin{proof}
 Suppose \(X\)~is complete and \(\{x_k\}\subseteq X\) with \(\sum\norm{x_k}<\infty\). By the Cauchy criterion for series in~\(\R\) (Proposition~4.5), for any \(\epsilon>0\) there exists~\(N\) such that for all \(n\ge m\ge N\),
 \[\bignorm{\sum_{k=m}^n x_k}\le\sum_{k=m}^n\norm{x_k}<\epsilon\]
@@ -486,7 +484,10 @@ Conversely, suppose every absolutely convergent series in~\(X\) converges and \(
 so \(\sum s_j\)~is absolutely convergent and hence convergent. But \(\sum_{i=1}^j s_i=x_{k_j}\), so \(\{x_{k_j}\}\)~converges. It follows that \(\{x_k\}\)~also converges, to the same value, since \(\{x_k\}\)~is Cauchy. Therefore \(X\)~is complete.
 \end{proof}
 
-\noindent In light of this result, to prove that \(\L^1\)~is complete it suffices to show that every absolutely convergent series of functions in~\(\L^1\) converges in~\(\L^1\). In the proof in the book, the series is \(f=\sum_{k=1}^{\infty}(f_{n_{k+1}}-f_{n_k})\). We see that \(f\in\L^1\), and that the partial sums converge to~\(f\) under~\(\norm{\cdot}_1\), by comparison with \(g=\sum_{k=1}^{\infty}\abs{f_{n_{k+1}}-f_{n_k}}\) and an appeal to the dominated convergence theorem. We see that \(g\in\L^1\) by an appeal to the monotone convergence theorem.
+\begin{rmk}
+This result helps us better understand the proof of the Riesz-Fischer theorem on the completeness of~\(\L^1\) (Theorem~7). In light of this result, to prove that \(\L^1\)~is complete it suffices to show that every absolutely convergent series of functions in~\(\L^1\) converges in~\(\L^1\).
+
+In the proof in the book, the series is \(f=\sum_{k=1}^{\infty}(f_{n_{k+1}}-f_{n_k})\). We see that \(f\in\L^1\), and that the partial sums converge to~\(f\) under~\(\norm{\cdot}_1\), by comparison with \(g=\sum_{k=1}^{\infty}\abs{f_{n_{k+1}}-f_{n_k}}\) and an appeal to the dominated convergence theorem. We see that \(g\in\L^1\) by an appeal to the monotone convergence theorem.
 \end{rmk}
 
 % References
