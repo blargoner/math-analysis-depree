@@ -8,6 +8,8 @@
 \newcommand{\Null}{\mathcal{N}}
 \newcommand{\D}{\mathcal{D}}
 \renewcommand{\L}{\mathcal{L}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\F}{\mathcal{F}}
 
 \newcommand{\upto}{\uparrow}
 \newcommand{\downto}{\downarrow}
@@ -33,10 +35,12 @@
 \newcommand{\bigabs}[1]{\left|{#1}\right|}
 \newcommand{\norm}[1]{\lVert{#1}\rVert}
 \newcommand{\bignorm}[1]{\left\lVert{#1}\right\rVert}
+\newcommand{\supnorm}[1]{\norm{#1}_{\infty}}
 \newcommand{\pos}[1]{#1^{+}}
 \renewcommand{\neg}[1]{#1^{-}}
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
 \newcommand{\comp}[1]{#1^c}
+\newcommand{\closure}[1]{\overline{#1}}
 
 % Theorems
 \theoremstyle{plain}
@@ -488,6 +492,43 @@ so \(\sum s_j\)~is absolutely convergent and hence convergent. But \(\sum_{i=1}^
 This result helps us better understand the proof of the Riesz-Fischer theorem on the completeness of~\(\L^1\) (Theorem~7). In light of this result, to prove that \(\L^1\)~is complete it suffices to show that every absolutely convergent series of functions in~\(\L^1\) converges in~\(\L^1\).
 
 In the proof in the book, the series is \(f=\sum_{k=1}^{\infty}(f_{n_{k+1}}-f_{n_k})\). We see that \(f\in\L^1\), and that the partial sums converge to~\(f\) under~\(\norm{\cdot}_1\), by comparison with \(g=\sum_{k=1}^{\infty}\abs{f_{n_{k+1}}-f_{n_k}}\) and an appeal to the dominated convergence theorem. We see that \(g\in\L^1\) by an appeal to the monotone convergence theorem.
+\end{rmk}
+
+\section*{Chapter~26}
+\begin{rmk}
+The Arzela-Ascoli theorem (Theorem~11) shows that any bounded, equicontinuous family of (real-valued) functions on a compact metric space is totally bounded. Indeed, if \(\F\)~is such a family, then \(\closure{\F}\)~is closed, bounded, and equicontinuous (Exercise~2), hence compact by Arzela-Ascoli, and hence totally bounded (Theorem~25.6).
+\end{rmk}
+
+\begin{exer}[6]
+The integral operator \(T:\C[a,b]\to\C[a,b]\) given by \(T(f)(x)=\int_a^x f\) is compact.
+\end{exer}
+\begin{proof}
+Note that \(T(f)\in\C[a,b]\) for \(f\in\C[a,b]\) by integrability of continuous functions and continuity of indefinite integrals. Also \(T\)~is linear by linearity of the integral, and \(T\)~is continuous since \(\supnorm{T(f)}\le\supnorm{f}(b-a)\).
+
+Let \(E\subseteq\C[a,b]\) be bounded. We know \(T(E)\)~is bounded by continuity of~\(T\). We claim \(T(E)\)~is equicontinuous. It then follows that \(\closure{T(E)}\)~is closed, bounded, and equicontinuous (Exercise~2), so \(\closure{T(E)}\)~is compact by Arzela-Ascoli, and \(T\)~is compact.
+
+Let \(\epsilon>0\). Let \(\supnorm{f}\le M\) for all \(f\in E\) and set \(\delta=\epsilon/M\). Then for all \(f\in E\) and \(a\le x\le y\le b\) with \(y-x<\delta\),
+\[\abs{T(f)(y)-T(f)(x)}=\bigabs{\int_x^yf}\le\int_x^y\abs{f}\le M(y-x)<M\delta=\epsilon\]
+Therefore \(T(E)\)~is equicontinuous as claimed.
+\end{proof}
+
+\begin{exer}[12]
+Let \(X\)~be a metric space with \(D\subseteq X\) dense and suppose \(f_k:X\to\R\) is continuous. If \(\{f_k\}\)~converges uniformly on~\(D\), \(\{f_k\}\)~converges uniformly on~\(X\).
+\end{exer}
+\begin{proof}
+We first claim \(\{f_i\}\)~converges pointwise on~\(X\). Let \(x\in X\). By density of~\(D\) in~\(X\), \(x=\lim_j x_j\) for some \(\{x_j\}\subseteq D\). Let \(a_{ij}=f_i(x_j)\). Then \(\lim_j a_{ij}=f_i(x)\) exists for all~\(i\) by continuity of the~\(f_i\) on~\(X\). Also \(\lim_i a_{ij}\) exists uniformly for all~\(j\) by uniform convergence of the~\(f_i\) on~\(D\). Therefore \(\lim_i f_i(x)\)~exists as claimed, and \(\lim_i f_i(x)=\lim_j\lim_i f_i(x_j)\) (Proposition~11.5).
+
+Let \(f(x)=\lim_i f_i(x)\) for all \(x\in X\). We claim \(f_i\to f\) uniformly on~\(X\). Let \(\epsilon>0\). Choose~\(N\) such that \(\abs{f(x)-f_i(x)}<\epsilon\) for all \(i\ge N\) and \(x\in D\). For \(x\in X\), write \(x=\lim_j x_j\) with \(\{x_j\}\subseteq D\). Then
+\[\abs{f(x_j)-f_i(x_j)}<\epsilon\]
+for all \(i\ge N\) and \(j\ge 1\). By the above, \(f(x)=\lim_j f(x_j)\), so letting \(j\to\infty\) yields
+\[\abs{f(x)-f_i(x)}\le\epsilon\]
+for all \(i\ge N\). Therefore \(f_i\to f\) uniformly as claimed.
+\end{proof}
+\begin{rmk}
+The limit~\(f\) is continuous (Proposition~2).
+\end{rmk}
+\begin{rmk}
+It is an immediate corollary that if \(\sum_{k=1}^{\infty}f_k\)~converges uniformly on~\(D\), then \(\sum_{k=1}^{\infty}f_k\)~converges uniformly on~\(X\).
 \end{rmk}
 
 % References
