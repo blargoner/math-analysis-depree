@@ -10,6 +10,7 @@
 \renewcommand{\L}{\mathcal{L}}
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\F}{\mathcal{F}}
+\renewcommand{\P}{\mathcal{P}}
 
 \newcommand{\upto}{\uparrow}
 \newcommand{\downto}{\downarrow}
@@ -21,6 +22,7 @@
 \newcommand{\fmin}{\wedge}
 \newcommand{\fmax}{\vee}
 \newcommand{\conv}{\ast}
+\newcommand{\after}{\circ}
 
 \newcommand{\Rint}{R\!\int}
 \renewcommand{\d}[1]{\,d\!{#1}}
@@ -28,6 +30,7 @@
 \newcommand{\du}{\d{u}}
 \newcommand{\dx}{\d{x}}
 \newcommand{\dy}{\d{y}}
+\newcommand{\df}{d\!f}
 
 \DeclareMathOperator{\Lap}{\mathcal{L}}
 
@@ -529,6 +532,27 @@ The limit~\(f\) is continuous (Proposition~2).
 \end{rmk}
 \begin{rmk}
 It is an immediate corollary that if \(\sum_{k=1}^{\infty}f_k\)~converges uniformly on~\(D\), then \(\sum_{k=1}^{\infty}f_k\)~converges uniformly on~\(X\).
+\end{rmk}
+
+\section*{Chapter~29}
+\begin{rmk}
+The proof of the continuity of~\(\df\) in Proposition~17 is flawed because (assuming \(\df=d_1f=d_2f=0\) outside of~\(D\)) we have
+\begin{align*}
+\df:X\times Y&\to L(X\times Y,Z)\\
+d_1f\after I_1:X&\to L(X,Z)\\
+d_2f\after I_2:Y&\to L(Y,Z)
+\end{align*}
+so the functional equation \(\df=d_1f\after I_1+d_2f\after I_2\) makes no sense.
+
+By Proposition~16,
+\[\df(x,y)(h,k)=d_1f(x,y)(h)+d_2f(x,y)(k)\]
+for all \((x,y),(h,k)\in X\times Y\), so
+\[\df(x,y)=d_1f(x,y)\after P_1+d_2f(x,y)\after P_2\]
+for all \((x,y)\in X\times Y\), where \(P_1\in L(X\times Y,X)\) and \(P_2\in L(X\times Y,Y)\) are just the projections \(P_1(h,k)=h\) and \(P_2(h,k)=k\). Define \(\P_1:L(X,Z)\to L(X\times Y,Z)\) by \(\P_1(\varphi)=\varphi\after P_1\) and \(\P_2:L(Y,Z)\to L(X\times Y,Z)\) by \(\P_2(\psi)=\psi\after P_2\). Then
+\[\df=\P_1\after d_1f+\P_2\after d_2f\tag{1}\]
+Now \(\P_1\)~is linear and
+\[\norm{\P_1(\varphi)}=\norm{\varphi\after P_1}\le\norm{\varphi}\norm{P_1}=\norm{\varphi}\]
+so \(\P_1\)~is also continuous, and similarly \(\P_2\)~is linear and continuous. It follows from~(1) that \(\df\)~is continuous.
 \end{rmk}
 
 % References
