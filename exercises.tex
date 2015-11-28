@@ -11,6 +11,7 @@
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\F}{\mathcal{F}}
 \renewcommand{\P}{\mathcal{P}}
+\newcommand{\I}{\mathcal{I}}
 
 \newcommand{\upto}{\uparrow}
 \newcommand{\downto}{\downarrow}
@@ -552,8 +553,23 @@ for all \((x,y)\in X\times Y\), where \(P_1\in L(X\times Y,X)\) and \(P_2\in L(X
 \[\df=\P_1\after d_1f+\P_2\after d_2f\tag{1}\]
 Now \(\P_1\)~is linear and
 \[\norm{\P_1(\varphi)}=\norm{\varphi\after P_1}\le\norm{\varphi}\norm{P_1}=\norm{\varphi}\]
-so \(\P_1\)~is also continuous, and similarly \(\P_2\)~is linear and continuous. It follows from~(1) that \(\df\)~is continuous.
+so \(\P_1\)~is also continuous, and similarly \(\P_2\)~is linear and continuous. It follows from~(1) that \(\df\)~is continuous. For the converse, see Exercise~15 below.
 \end{rmk}
+
+\begin{exer}[15]
+If \(f:D\subseteq X\times Y\to Z\) is continuously differentiable on~\(D\), then \(d_1f\)~and~\(d_2f\) exist and are continuous on~\(D\).
+\end{exer}
+\begin{proof}
+By Proposition~16, \(d_1f\)~and~\(d_2f\) exist and
+\[\df(x,y)(h,k)=d_1f(x,y)(h)+d_2f(x,y)(k)\]
+In particular,
+\[\df(x,y)(h,0)=d_1f(x,y)(h)\qquad\text{and}\qquad\df(x,y)(0,k)=d_2f(x,y)(k)\]
+Letting \(I_1\in L(X,X\times Y)\) and \(I_2\in L(Y,X\times Y)\) be the injections \(I_1(h)=(h,0)\) and \(I_2(k)=(0,k)\), we have
+\[\df(x,y)\after I_1=d_1f(x,y)\qquad\text{and}\qquad\df(x,y)\after I_2=d_2f(x,y)\]
+Define \(\I_1:L(X\times Y,Z)\to L(X,Z)\) by \(\I_1(\varphi)=\varphi\after I_1\) and \(\I_2:L(X\times Y,Z)\to L(Y,Z)\) by \(\I_2(\psi)=\psi\after I_2\). Then \(\I_1\)~and~\(\I_2\) are linear and continuous and (assuming \(\df=d_1f=d_2f=0\) outside of~\(D\))
+\[\I_1\after\df=d_1f\qquad\text{and}\qquad\I_2\after\df=d_2f\]
+so \(d_1f\)~and~\(d_2f\) are continuous.
+\end{proof}
 
 % References
 \begin{thebibliography}{0}
