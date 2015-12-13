@@ -32,6 +32,8 @@
 \newcommand{\dx}{\d{x}}
 \newcommand{\dy}{\d{y}}
 \newcommand{\df}{d\!f}
+\newcommand{\dg}{dg}
+\renewcommand{\dh}{d\!h}
 
 \DeclareMathOperator{\Lap}{\mathcal{L}}
 
@@ -550,6 +552,35 @@ We see that it is best to view the derivative of a function \(f:X\to Y\) between
 \end{itemize}
 Dieudonn\'e calls these identifications ``slavish subservience to the shibboleth of numerical interpretation'' (\cite{dieudonne}, p.~141).
 \end{rmk}
+
+\begin{rmk}
+A function \(f:X\to Y\) between the normed linear spaces \(X\)~and~\(Y\) is differentiable at~\(x_0\) if and only if there is \(T\in L(X,Y)\) such that the function
+\[\delta(x)=\begin{cases}
+\norm{f(x)-f(x_0)-T(x-x_0)}/\norm{x-x_0}&\text{if }x\ne x_0\\
+0&\text{if }x=x_0
+\end{cases}\]
+is continuous at~\(x_0\), in which case \(T=\df(x_0)\). We call~\(\delta\) the \emph{differential quotient (d.q.)} for~\(f\) at~\(x_0\).
+\end{rmk}
+
+\noindent We provide an alternative proof of the chain rule using the previous remark:
+\begin{thm}[Chain rule]
+Let \(X\), \(Y\), and~\(Z\) be normed linear spaces. Let \(f:X\to Y\), \(g:Y\to Z\), and \(h=g\after f:X\to Z\). If \(f\)~is differentiable at~\(x_0\) and \(g\)~is differentiable at \(y_0=f(x_0)\), then \(h\)~is differentiable at~\(x_0\) and \(\dh(x_0)=\dg(y_0)\df(x_0)\).
+\end{thm}
+\begin{proof}
+Let \(T=\df(x_0)\), \(U=\dg(y_0)\), and \(V=UT\). Let \(\delta_f\)~be the d.q. for~\(f\) at~\(x_0\) and \(\delta_g\)~the d.q. for~\(g\) at~\(y_0\). We claim
+\[\delta_h(x)=\begin{cases}
+\norm{h(x)-h(x_0)-V(x-x_0)}/\norm{x-x_0}&\text{if }x\ne x_0\\
+0&\text{if }x=x_0
+\end{cases}\]
+is continuous at~\(x_0\), from which the theorem follows. Observe
+\begin{multline*}
+h(x)-h(x_0)-V(x-x_0)=g(f(x))-g(f(x_0))-U(f(x)-f(x_0))\\
+	+U(f(x)-f(x_0)-T(x-x_0))
+\end{multline*}
+For \(x\)~close but not equal to~\(x_0\), \(\norm{f(x)-f(x_0)}/\norm{x-x_0}\le\norm{T}+1\), so
+\[\delta_h(x)\le(\norm{T}+1)\delta_g(f(x))+\norm{U}\delta_f(x)\]
+Now \(\delta_g\after f\)~and~\(\delta_f\) continuously vanish at~\(x_0\), so \(\delta_h\)~does also.
+\end{proof}
 
 \begin{rmk}
 The proof of the continuity of~\(\df\) in Proposition~17 is flawed because (assuming \(\df=d_1f=d_2f=0\) outside of~\(D\)) we have
