@@ -541,6 +541,17 @@ It is an immediate corollary that if \(\sum_{k=1}^{\infty}f_k\)~converges unifor
 
 \section*{Chapter~29}
 \begin{rmk}
+We see that it is best to view the derivative of a function \(f:X\to Y\) between normed linear spaces \(X\)~and~\(Y\) as a continuous linear transformation from~\(X\) to~\(Y\) (Definition~1). The following are special cases:
+\begin{itemize}
+\item If \(X=Y=\R\), such transformations are uniquely represented by numbers in~\(\R\) under the scalar product, so we identify derivatives with numbers (Definition~9.1).
+\item If \(X=\R^n\) and \(Y=\R\), such transformations are uniquely represented by (gradient) vectors in~\(\R^n\) under the dot product, so we identify derivatives with vectors (Definitions 10.4~and~10.5 and Propositions 10.3~and~10.6).
+\item If \(X=\R\) and \(Y=\R^m\), such transformations are uniquely represented by vectors in~\(\R^m\) under the scalar product, so we identify derivatives with vectors (Definition~10.10). This is also true if \(Y\)~is an arbitrary normed linear space (Example~5).
+\item If \(X=\R^n\) and \(Y=\R^m\), such transformations are uniquely represented by (Jacobian) \(m\times n\) matrices over~\(\R\) under the matrix product, so we can identify derivatives with matrices.
+\end{itemize}
+Dieudonn\'e calls these identifications ``slavish subservience to the shibboleth of numerical interpretation'' (\cite{dieudonne}, p.~141).
+\end{rmk}
+
+\begin{rmk}
 The proof of the continuity of~\(\df\) in Proposition~17 is flawed because (assuming \(\df=d_1f=d_2f=0\) outside of~\(D\)) we have
 \begin{align*}
 \df:X\times Y&\to L(X\times Y,Z)\\
@@ -578,6 +589,7 @@ so \(d_1f\)~and~\(d_2f\) are continuous.
 % References
 \begin{thebibliography}{0}
 \bibitem{depree} DePree, J.~D. and C.~W. Swartz. \textit{Introduction to Real Analysis.} Wiley, 1988.
+\bibitem{dieudonne} Dieudonn\'e, J. \textit{Foundations of Modern Analysis.} Academic Press, 1960.
 \bibitem{royden} Royden, H.~L. \textit{Real Analysis}, 3rd~ed. Prentice Hall, 1988.
 \end{thebibliography}
 \end{document}
