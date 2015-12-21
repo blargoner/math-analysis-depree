@@ -8,10 +8,12 @@
 \newcommand{\Null}{\mathcal{N}}
 \newcommand{\D}{\mathcal{D}}
 \renewcommand{\L}{\mathcal{L}}
+\newcommand{\BC}{\mathcal{BC}}
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\F}{\mathcal{F}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\I}{\mathcal{I}}
+\newcommand{\T}{\mathcal{T}}
 
 \newcommand{\upto}{\uparrow}
 \newcommand{\downto}{\downarrow}
@@ -624,6 +626,21 @@ Define \(\I_1:L(X\times Y,Z)\to L(X,Z)\) by \(\I_1(\varphi)=\varphi\after I_1\) 
 \[\I_1\after\df=d_1f\qquad\text{and}\qquad\I_2\after\df=d_2f\]
 so \(d_1f\)~and~\(d_2f\) are continuous.
 \end{proof}
+
+\section*{Chapter~30}
+\begin{rmk}
+In the proof of the inverse function theorem (Theorem~1), after the initial reductions have been made so that \(x_0=y_0=0\), \(f:X\to X\), and \(\df(0)=I\), we view~\(f\) as a local ``perturbation of the identity'' near the origin, \(f=I+p\), so that a local inverse~\(g\) of~\(f\) satisfies \(g=I-p\after g\) and is therefore a fixed point of the transformation \(\T:\varphi\mapsto I-p\after\varphi\) on an appropriate function space.
+
+In seeking a function space in which we can apply the Banach fixed point theorem to~\(\T\), we are naturally lead to consider closed subspaces of bounded continuous functions on~\(X\), since such spaces are complete. We know about the local behavior of~\(p\) near the origin. More specifically, since \(f\)~is continuously differentiable at the origin, for any \(\epsilon>0\) there exists \(\delta>0\) such that
+\[\norm{p(x_1)-p(x_2)}\le\epsilon\norm{x_1-x_2}\qquad\text{for }\norm{x_1},\norm{x_2}\le\delta\]
+and, taking \(x_2=0\), \(\norm{p(x_1)}\le\epsilon\norm{x_1}\) for \(\norm{x_1}\le\delta\) (Corollary~29.15). Therefore we restrict our attention to subspaces of functions defined near the origin. If \(\varphi\)~is such a function, then
+\[\norm{\T(\varphi)(x)}\le\norm{x}+\norm{p(\varphi(x))}\]
+so if \(\norm{x}\le\delta/2\) and \(\norm{\varphi(x)}\le\delta\), then \(\norm{\T(\varphi)(x)}\le(1/2+\epsilon)\delta\) by the above, and \(\norm{\T(\varphi)(x)}<\delta\) if we choose \(\epsilon<1/2\), say \(\epsilon=1/3\). This suggests the subspace
+\[S=\{\,\varphi\in\BC(\,B(0,\delta/2),X)\mid\norm{\varphi}\le\delta\,\}\]
+By the above, \(S\)~is closed under~\(\T\), and \(S\)~is contracted by~\(\T\) since
+\[\norm{\T(\varphi)(x)-\T(\psi)(x)}=\norm{p(\varphi(x))-p(\psi(x))}\le\epsilon\norm{\varphi(x)-\psi(x)}\]
+Therefore \(\T\)~has a unique fixed point~\(g\), which is the desired local inverse of~\(f\).
+\end{rmk}
 
 % References
 \begin{thebibliography}{0}
