@@ -639,7 +639,15 @@ so if \(\norm{x}\le\delta/2\) and \(\norm{\varphi(x)}\le\delta\), then \(\norm{\
 \[S=\{\,\varphi\in\BC(\,B(0,\delta/2),X)\mid\norm{\varphi}\le\delta\,\}\]
 By the above, \(S\)~is closed under~\(\T\), and \(S\)~is contracted by~\(\T\) since
 \[\norm{\T(\varphi)(x)-\T(\psi)(x)}=\norm{p(\varphi(x))-p(\psi(x))}\le\epsilon\norm{\varphi(x)-\psi(x)}\]
-Therefore \(\T\)~has a unique fixed point~\(g\), which is the desired local inverse of~\(f\).
+Therefore \(\T\)~has a unique fixed point~\(g\), which is the desired local inverse of~\(f\). We see that \(g\)~has nice properties: it is differentiable, and continuously so if \(f\)~is, with derivative equal to the inverse of the derivative of~\(f\).
+\end{rmk}
+
+\begin{rmk}
+Recall that an indexed family \(\F=\{\,S_x\mid x\in X\,\}\) of sets is equivalently represented by the indexing function \(\pi:\coprod_{x\in X}S_x\to X\) where
+\[\coprod_{x\in X}S_x=\bigunion_{x\in X}(\,\{x\}\times S_x)=\{\,(x,s)\mid x\in X\land s\in S_x\,\}\]
+represents the disjoint union over~\(\F\) and \(\pi(x,s)=x\). Indeed, for \(x\in X\), \(S_x\)~is obtained by projecting~\(\pi^{-1}(x)\). Moreover, if \(S_x\ne\emptyset\) for all \(x\in X\), then a choice function for~\(\F\) is obtained by projecting a right inverse of~\(\pi\).
+
+In the proof of the implicit function theorem (Theorem~4), this idea is used. The function \(F(x,y)=(x,f(x,y))\) is an indexing function, where \(F^{-1}(x,0)\)~is the set of all~\(y\) such that \(f(x,y)=0\). The local inverse function for~\(F\) is therefore a local choice function for the indexed family, and yields the implicit function~\(\varphi\) such that \(f(x,\varphi(x))=0\). Since the inverse function has the nice property of being continuously differentiable, so does~\(\varphi\).
 \end{rmk}
 
 % References
