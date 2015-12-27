@@ -73,6 +73,18 @@
 \section*{Introduction}
 This document contains notes and exercises from~\cite{depree}.
 
+\section*{Chapter~5}
+We provide an alternative proof of Cauchy-Schwarz for~\(\R^n\) (Proposition~2(v)).
+\begin{thm}[Cauchy-Schwarz]
+If \(\vec{x},\vec{y}\in\R^n\), then \(\abs{\vec{x}\cdot\vec{y}}\le\norm{\vec{x}}\norm{\vec{y}}\).
+\end{thm}
+\begin{proof}
+Let \(\vec{x}=(x_1,\ldots,x_n)\) and \(\vec{y}=(y_1,\ldots,y_n)\). We must prove
+\[\bigabs{\sum_{k=1}^n x_ky_k}\le\sqrt{\sum_{k=1}^n x_k^2}\ \sqrt{\sum_{k=1}^n y_k^2}\tag{1}\]
+Let \(B=2\sum_{k=1}^n x_ky_k\), \(A=\sum_{k=1}^n x_k^2\), and \(C=\sum_{k=1}^n y_k^2\). Then (1)~is equivalent to \((B/2)^2-AC\le 0\), which is equivalent to \(D=B^2-4AC\le 0\). We may assume \(A\ne 0\), so \(D\)~is just the discriminant of the quadratic polynomial \(P(x)=Ax^2+Bx+C\) and \(D\le 0\) if \(P\ge 0\). Now
+\[Ax^2+Bx+C=\sum_{k=1}^n(xx_k)^2+\sum_{k=1}^n2(xx_k)y_k+\sum_{k=1}^ny_k^2=\sum_{k=1}^n(xx_k+y_k)^2\ge 0\qedhere\]
+\end{proof}
+
 \section*{Chapter~13}
 We provide an alternative proof of the forward direction of Theorem~42.
 \begin{thm} If \(f:[a,b]\to\R\) is integrable, then
