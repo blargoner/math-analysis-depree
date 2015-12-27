@@ -543,6 +543,15 @@ The limit~\(f\) is continuous (Proposition~2).
 It is an immediate corollary that if \(\sum_{k=1}^{\infty}f_k\)~converges uniformly on~\(D\), then \(\sum_{k=1}^{\infty}f_k\)~converges uniformly on~\(X\).
 \end{rmk}
 
+\section*{Chapter~28}
+\begin{rmk}
+In the proof of Lemma~3, in order to construct~\(f\) intuitively we want to ``normalize''~\(g\) at \(s\)~and~\(t\) by dividing by \(g(s)\)~and~\(g(t)\), and then scale the result by \(a\)~and~\(b\) to yield those values at \(s\)~and~\(t\), respectively. Since \(g(s)\ne g(t)\), we can divide by \(g(s)-g(t)\ne0\), so
+\[f(x)=\frac{h(x)}{g(s)-g(t)}\]
+To ensure that \(f(s)=a\), we must have \(h(s)=[g(s)-g(t)]a\), which suggests that \(h(x)\)~should contain the term \([g(x)-g(t)]a\). Similarly to ensure that \(f(t)=b\), we must have \(h(t)=[g(s)-g(t)]b\), which suggests that \(h(x)\)~should contain the term \([g(s)-g(x)]b\). Adding these terms together, we get
+\[f(x)=\frac{[g(x)-g(t)]a-[g(x)-g(s)]b}{g(s)-g(t)}\]
+which satisfies \(f(s)=a\) and \(f(t)=b\) as desired.
+\end{rmk}
+
 \section*{Chapter~29}
 \begin{rmk}
 We see that it is best to view the derivative of a function \(f:X\to Y\) between normed linear spaces \(X\)~and~\(Y\) as a continuous linear transformation from~\(X\) to~\(Y\) (Definition~1). The following are special cases:
