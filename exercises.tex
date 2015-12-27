@@ -86,7 +86,17 @@ Let \(B=2\sum_{k=1}^n x_ky_k\), \(A=\sum_{k=1}^n x_k^2\), and \(C=\sum_{k=1}^n y
 \end{proof}
 
 \section*{Chapter~13}
-We provide an alternative proof of the forward direction of Theorem~42.
+We provide an alternative proof of Theorem~5.
+\begin{thm}
+If \(\gamma\)~is a gauge on \(I=[a,b]\), there exists a \(\gamma\)-fine tagged division of~\(I\).
+\end{thm}
+\begin{proof}
+If not, bisect~\(I\). At least one of the two resulting subintervals must not have a \(\gamma\)-fine tagged division, lest we could combine \(\gamma\)-fine tagged divisions of both to obtain a \(\gamma\)-fine tagged division of~\(I\).
+
+Continue bisecting recursively to obtain a descending chain \(I=I_0\supseteq\cdots\supseteq I_k\supseteq\cdots\) of subintervals with \(l(I_k)\to0\) such that \(I_k\)~does not have a \(\gamma\)-fine tagged division. Let \(x\in\bigsect_{k=0}^{\infty}I_k\). Then there exists \(I_k\subseteq\gamma(x)\), so \(\{(x,I_k)\}\)~is a \(\gamma\)-fine tagged division of~\(I_k\)---a contradiction.
+\end{proof}
+
+\noindent We provide an alternative proof of the forward direction of Theorem~42.
 \begin{thm} If \(f:[a,b]\to\R\) is integrable, then
 \[\int_a^b f=\lim_{c\to a^+}\int_c^b f\]
 \end{thm}
