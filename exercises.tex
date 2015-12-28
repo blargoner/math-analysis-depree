@@ -96,6 +96,10 @@ If not, bisect~\(I\). At least one of the two resulting subintervals must not ha
 Continue bisecting recursively to obtain a descending chain \(I=I_0\supseteq\cdots\supseteq I_k\supseteq\cdots\) of subintervals with \(l(I_k)\to0\) such that \(I_k\)~does not have a \(\gamma\)-fine tagged division. Let \(x\in\bigsect_{k=0}^{\infty}I_k\). Then there exists \(I_k\subseteq\gamma(x)\), so \(\{(x,I_k)\}\)~is a \(\gamma\)-fine tagged division of~\(I_k\)---a contradiction.
 \end{proof}
 
+\begin{rmk}
+In the proof of the second part of the fundamental theorem of calculus (Theorem~28), note that \(f-f(x)\) is absolutely integrable by Corollary~33.
+\end{rmk}
+
 \noindent We provide an alternative proof of the forward direction of Theorem~42.
 \begin{thm} If \(f:[a,b]\to\R\) is integrable, then
 \[\int_a^b f=\lim_{c\to a^+}\int_c^b f\]
