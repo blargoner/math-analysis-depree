@@ -115,6 +115,8 @@ Note \(\int_c^b f\)~exists for all \(c\in[a,b]\) by Theorem~21. Now
 \end{proof}
 \begin{rmk}
 We used the continuity of the indefinite integral (Theorem~27), which was proved using Henstock's Lemma (Lemma~25). The proof of the forward direction of Theorem~42 in the book unnecessarily repeats some ideas from the proof of Henstock's Lemma. See also the proof of the forward direction of Theorem~14.6 in the book.
+
+Our proof is natural because the theorem itself expresses the continuity of the integral when viewed as a function of the interval of integration. See also the remarks on the monotone convergence theorem below.
 \end{rmk}
 
 \section*{Chapter~14}
@@ -143,6 +145,12 @@ Instead of assuming that \(g\)~is nonnegative and decreasing, we may assume only
 \end{rmk}
 
 \section*{Chapter~15}
+\begin{rmk}
+The monotone convergence theorem (Theorem~1) shows continuity of the integral \emph{when viewed as a function of the integrand}. Specifically, if \(f_k\upto f\) (or \(f_k\downto f\)), then \(\int_I f=\int_I\lim f_k=\lim\int_I f_k\), when this limit exists. Similarly, the results on ``improper'' integrals (Theorems 13.42~and~14.6) show continuity for the integral \emph{when viewed as a function of the interval of integration}. Specifically, if \(I_k\upto I\), then \(\int_I f=\int_{\lim I_k}f=\lim\int_{I_k}f\), when this limit exists.
+
+The proofs in the book for both types of continuity are similar, and involve combining infinitely many ``approximating'' gauges (in the former case for the functions~\(f_k\), and in the latter case for the intervals~\(I_k\)) to construct a single ``limit'' gauge for~\(f\) over~\(I\).
+\end{rmk}
+
 \begin{rmk}
 The dominated convergence theorem (Theorem~3) actually shows the \emph{absolute integrability} of~\(f\), by comparison (Corollary~13.33 and Exercise~47).
 \end{rmk}
