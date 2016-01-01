@@ -523,6 +523,18 @@ It follows that \(I=\sqrt{\pi}/2\).
 Convolution is commutative (Exercise~1) and associative (Exercise~2), and if \(\varphi_n\)~is a delta sequence, then it is an ``approximate identity'' element since \(f\conv\varphi_n\approx f\) under appropriate conditions (Theorem~7).
 \end{rmk}
 
+\begin{rmk}
+In Example~2, note
+\[\varphi_n(t)=\frac{1}{\pi}\frac{1/n}{t^2+1/n^2}=\frac{n}{\pi[(nt)^2+1]}\]
+so if \(\varphi(t)=1/[\pi(t^2+1)]\), then \(\varphi_n(t)=n\varphi(nt)\).
+
+In Example~3, note
+\[\varphi_n(t)=\sqrt{n/\pi}\,e^{-nt^2}=\frac{\sqrt{n}}{\sqrt{\pi}}e^{-(\sqrt{n}\,t)^2}\]
+so if \(\varphi(t)=e^{-t^2}/\sqrt{\pi}\), then \(\varphi_n(t)=\sqrt{n}\,\varphi(\sqrt{n}\,t)\).
+
+Therefore both of these examples are instances of vertical stretching and horizontal shrinking of a base function, like Examples 4~and~5.
+\end{rmk}
+
 \begin{exer}[3]
 Let \(f,g:\R\to\R\). Suppose \(f\)~is bounded and continuous and \(g\)~is continuous and absolutely integrable. Then \(f\conv g\)~exists and is bounded and continuous, with \(\sup\abs{f\conv g}\le\sup\abs{f}\int_{-\infty}^{\infty}\abs{g}\).
 \end{exer}
