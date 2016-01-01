@@ -412,6 +412,10 @@ This example shows that absolute integrability of a function~\(f\) is a stronger
 Fubini's theorem for double integrals (Theorem~12) is a continuous version of the corresponding discrete result for double series (Exercise~4.16), with absolute integrability replacing absolute convergence.
 \end{rmk}
 
+\begin{rmk}
+By ``truncating'', we can extend results about functions with bounded domains or ranges to functions with unbounded domains or ranges through limit processes. For example, for \(f\)~nonnegative and integrable, we might let \(f_n=f\fmin nC_{[-n,n]}\) be a ``truncated'' version of~\(f\) with \(f_n\upto f\), and then extend an integration result for~\(f_n\) on~\([-n,n]\) to a similar result for~\(f\) through one of the convergence theorems for integrals. This technique is used in the proofs of the Fubini theorems and many other results.
+\end{rmk}
+
 \begin{exmp}[14]
 Let \(f(x,y)=e^{-xy}-2e^{-2xy}\). Then for \(y>0\),
 \[g(y)=\int_1^{\infty}f(x,y)\dx=\left[\frac{-e^{-xy}}{y}+\frac{e^{-2xy}}{y}\right]_{x=1}^{\infty}=\frac{e^{-y}-e^{-2y}}{y}\]
