@@ -26,6 +26,8 @@
 \newcommand{\fmax}{\vee}
 \newcommand{\conv}{\ast}
 \newcommand{\after}{\circ}
+\newcommand{\grad}{\nabla}
+\newcommand{\fprod}{:}
 
 \newcommand{\Rint}{R\!\int}
 \renewcommand{\d}[1]{\,d\!{#1}}
@@ -38,6 +40,7 @@
 \renewcommand{\dh}{d\!h}
 
 \DeclareMathOperator{\Lap}{\mathcal{L}}
+\DeclareMathOperator{\Tr}{Tr}
 
 \newcommand{\abs}[1]{|{#1}|}
 \newcommand{\bigabs}[1]{\left|{#1}\right|}
@@ -47,6 +50,7 @@
 \newcommand{\pos}[1]{#1^{+}}
 \renewcommand{\neg}[1]{#1^{-}}
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand{\mat}[1]{\boldsymbol{#1}}
 \newcommand{\comp}[1]{#1^c}
 \newcommand{\closure}[1]{\overline{#1}}
 
@@ -617,10 +621,39 @@ We see that it is best to view the derivative of a function \(f:X\to Y\) between
 \begin{itemize}
 \item If \(X=Y=\R\), such transformations are uniquely represented by numbers in~\(\R\) under the scalar product, so we identify derivatives with numbers (Definition~9.1).
 \item If \(X=\R^n\) and \(Y=\R\), such transformations are uniquely represented by (gradient) vectors in~\(\R^n\) under the dot product, so we identify derivatives with vectors (Definitions 10.4~and~10.5 and Propositions 10.3~and~10.6).
-\item If \(X=\R\) and \(Y=\R^m\), such transformations are uniquely represented by vectors in~\(\R^m\) under the scalar product, so we identify derivatives with vectors (Definition~10.10). This is also true if \(Y\)~is an arbitrary normed linear space (Example~5).
-\item If \(X=\R^n\) and \(Y=\R^m\), such transformations are uniquely represented by (Jacobian) \(m\times n\) matrices over~\(\R\) under the matrix product, so we can identify derivatives with matrices.
+\item If \(X=\R\) and \(Y=\R^m\), such transformations are uniquely represented by (tangent) vectors in~\(\R^m\) under the scalar product, so we identify derivatives with vectors (Definition~10.10). This is also true if \(Y\)~is an arbitrary normed linear space (Example~5).
+\item If \(X=\R^n\) and \(Y=\R^m\), such transformations are uniquely represented by \(m\times n\) (Jacobian) matrices over~\(\R\) under the matrix product, so we can identify derivatives with matrices.
 \end{itemize}
-Dieudonn\'e calls these identifications ``slavish subservience to the shibboleth of numerical interpretation'' (\cite{dieudonne}, p.~141).
+Dieudonn\'e considers such definitions ``slavish subservience to the shibboleth of numerical interpretation'' (\cite{dieudonne}, p.~141).
+\end{rmk}
+
+\begin{rmk}
+We provide additional examples of derivatives from matrix calculus. Let \(\R^{n\times n}\) be the space of \(n\times n\)~matrices over~\(\R\) identified with~\(L(\R^n,\R^n)\) under the standard basis and the operator norm induced by~\(\norm{\cdot}_1\) on~\(\R^n\). For \(\mat{A}\in\R^{n\times n}\), let \(A_{ij}\)~denote the \((i,j)\)-th entry of~\(\mat{A}\). Observe that
+\[\abs{A_{ij}}\le\sum_{k=1}^n\abs{A_{kj}}=\norm{\mat{A}\vec{e_j}}\le\norm{\mat{A}}\]
+Conversely, if \(\vec{x}\in\R^n\) with \(\norm{\vec{x}}\le 1\), then
+\[\norm{\mat{A}\vec{x}}=\sum_{i=1}^n\bigabs{\sum_{j=1}^n A_{ij}x_i}\le\sum_{i,j}\abs{A_{ij}}\]
+and hence \(\norm{\mat{A}}\le\sum_{i,j}\abs{A_{ij}}\). Let \(\mat{E_{ij}}\in\R^{n\times n}\)~denote the \((i,j)\)-th standard basis matrix with \((i,j)\)-th entry equal to~\(1\) and all other entries equal to~\(0\).
+\begin{itemize}
+\item The derivative of a scalar-valued function of matrices \(f:\R^{n\times n}\to\R\) at~\(\mat{A}\) is naturally identified with the \(n\times n\) (gradient) matrix
+\[\grad f(\mat{A})=[\df(\mat{A})(\mat{E_{ij}})]\]
+Indeed, for \(\mat{H}\in\R^{n\times n}\),
+\begin{align*}
+\df(\mat{A})(\mat{H})&=\df(\mat{A})(\sum_{i,j}\mat{E_{ij}}H_{ij})\\
+	&=\sum_{i,j}\df(\mat{A})(\mat{E_{ij}})H_{ij}\\
+	&=\sum_{i,j}\grad f(\mat{A})_{ij}H_{ij}\\
+	&=\grad f(\mat{A})\fprod\mat{H}
+\end{align*}
+where \(\grad f(\mat{A})\fprod\mat{H}\)~denotes the Frobenius product of \(\grad f(\mat{A})\) and~\(\mat{H}\). Note that \(\df(\mat{A})(\mat{E_{ij}})=d_{ij}f(\mat{A})\), the \((i,j)\)-th partial derivative of~\(f\) at~\(\mat{A}\), by a generalization of Proposition~16. Therefore we may write
+\[\frac{d}{d\mat{A}}f(\mat{A})=\df(\mat{A})=\grad f(\mat{A})=\left[\frac{\partial}{\partial A_{ij}}f(\mat{A})\right]\]
+For example, the trace function \(\Tr:\R^{n\times n}\to\R\) is linear, hence \(d\Tr(\mat{A})=\Tr\). Since \(\Tr(\mat{E_{ij}})=\delta_{ij}\), it follows that \(\grad\Tr(\mat{A})=\mat{I}\).
+\item The derivative of a matrix-valued function of scalars \(\mat{F}:\R\to\R^{n\times n}\) at \(x\in\R\) is naturally identified with the (tangent) matrix
+\[\mat{F'}(x)=[F_{ij}'(x)]\]
+where \(F_{ij}:\R\to\R\) is the \((i,j)\)-th component function of~\(\mat{F}\). Indeed, it follows from the inequalities above that \(\mat{T}:\R\to\R^{n\times n}\) is the derivative of~\(\mat{F}\) at~\(x\) if and only if each \(T_{ij}\)~is the derivative of~\(F_{ij}\) at~\(x\). So for \(h\in\R\),
+\[d\mat{F}(x)(h)=d\mat{F}(x)(1)h=[dF_{ij}(x)(1)]h=[F_{ij}'(x)]h=\mat{F'}(x)h\]
+Therefore we may write
+\[\frac{d}{dx}\mat{F}=\left[\frac{d}{dx}F_{ij}\right]\]
+For example, taking \(x=F_{ij}\) we have \(d\mat{F}/dF_{ij}=\mat{E_{ij}}\).
+\end{itemize}
 \end{rmk}
 
 \begin{rmk}
