@@ -631,7 +631,7 @@ Dieudonn\'e considers such definitions ``slavish subservience to the shibboleth 
 We provide additional examples of derivatives from matrix calculus. Let \(\R^{n\times n}\) be the space of \(n\times n\)~matrices over~\(\R\) identified with~\(L(\R^n,\R^n)\) under the standard basis and the operator norm induced by~\(\norm{\cdot}_1\) on~\(\R^n\). For \(\mat{A}\in\R^{n\times n}\), let \(A_{ij}\)~denote the \((i,j)\)-th entry of~\(\mat{A}\). Observe that
 \[\abs{A_{ij}}\le\sum_{k=1}^n\abs{A_{kj}}=\norm{\mat{A}\vec{e_j}}\le\norm{\mat{A}}\]
 Conversely, if \(\vec{x}\in\R^n\) with \(\norm{\vec{x}}\le 1\), then
-\[\norm{\mat{A}\vec{x}}=\sum_{i=1}^n\bigabs{\sum_{j=1}^n A_{ij}x_i}\le\sum_{i,j}\abs{A_{ij}}\]
+\[\norm{\mat{A}\vec{x}}=\sum_{i=1}^n\bigabs{\sum_{j=1}^n A_{ij}x_j}\le\sum_{i,j}\abs{A_{ij}}\]
 and hence \(\norm{\mat{A}}\le\sum_{i,j}\abs{A_{ij}}\). Let \(\mat{E_{ij}}\in\R^{n\times n}\)~denote the \((i,j)\)-th standard basis matrix with \((i,j)\)-th entry equal to~\(1\) and all other entries equal to~\(0\).
 \begin{itemize}
 \item The derivative of a scalar-valued function of matrices \(f:\R^{n\times n}\to\R\) at~\(\mat{A}\) is naturally identified with the \(n\times n\) (gradient) matrix
@@ -646,7 +646,7 @@ Indeed, for \(\mat{H}\in\R^{n\times n}\),
 where \(\grad f(\mat{A})\fprod\mat{H}\)~denotes the Frobenius product of \(\grad f(\mat{A})\) and~\(\mat{H}\). Note that \(\df(\mat{A})(\mat{E_{ij}})=d_{ij}f(\mat{A})\), the \((i,j)\)-th partial derivative of~\(f\) at~\(\mat{A}\), by a generalization of Proposition~16. Therefore we may write
 \[\frac{d}{d\mat{A}}f(\mat{A})=\df(\mat{A})=\grad f(\mat{A})=\left[\frac{\partial}{\partial A_{ij}}f(\mat{A})\right]\]
 For example, the trace function \(\Tr:\R^{n\times n}\to\R\) is linear, hence \(d\Tr(\mat{A})=\Tr\). Since \(\Tr(\mat{E_{ij}})=\delta_{ij}\), it follows that \(\grad\Tr(\mat{A})=\mat{I}\).
-\item The derivative of a matrix-valued function of scalars \(\mat{F}:\R\to\R^{n\times n}\) at \(x\in\R\) is naturally identified with the (tangent) matrix
+\item The derivative of a matrix-valued function of scalars \(\mat{F}:\R\to\R^{n\times n}\) at \(x\in\R\) is naturally identified with the \(n\times n\) (tangent) matrix
 \[\mat{F'}(x)=[F_{ij}'(x)]\]
 where \(F_{ij}:\R\to\R\) is the \((i,j)\)-th component function of~\(\mat{F}\). Indeed, it follows from the inequalities above that \(\mat{T}:\R\to\R^{n\times n}\) is the derivative of~\(\mat{F}\) at~\(x\) if and only if each \(T_{ij}\)~is the derivative of~\(F_{ij}\) at~\(x\). So for \(h\in\R\),
 \[d\mat{F}(x)(h)=d\mat{F}(x)(1)h=[dF_{ij}(x)(1)]h=[F_{ij}'(x)]h=\mat{F'}(x)h\]
